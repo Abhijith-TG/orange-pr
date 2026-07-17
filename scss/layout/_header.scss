@@ -43,6 +43,16 @@
                 opacity: .7;
             }
         }
+
+         @media (max-width: 992px) {
+    .nav-list {
+      display: none;
+    }
+
+    .menu-btn {
+      display: flex;
+    }
+  }
     }
 
     .group-nav-menu{
