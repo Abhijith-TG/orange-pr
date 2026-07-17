@@ -22,8 +22,8 @@
   transition: transform v.$transition-base, background v.$transition-base;
 
   @include m.respond(lg) {
-    width: 340px;
-    height: 260px;
+    width: 300px;
+    height: 230px;
   }
 
   @include m.respond(md) {
@@ -39,7 +39,6 @@
 
     .play-circle {
       background: v.$clr-white;
-      border-color: v.$clr-white;
 
       svg { color: v.$clr-dark; }
     }
@@ -63,22 +62,33 @@
 
     .play-circle {
       @include m.flex-center;
-      width: 54px;
-      height: 54px;
+      width: 100px;
+      height: 100px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.25);
-      border: 1.5px solid rgba(255, 255, 255, 0.75);
+      background: rgba(255, 255, 255, 0.59);
+      border: none;
       backdrop-filter: blur(6px);
       -webkit-backdrop-filter: blur(6px);
-      transition: background v.$transition-base, border-color v.$transition-base;
+      transition: background v.$transition-base;
 
       svg {
-        width: 20px;
-        height: 20px;
+        width: 48px;
+        height: 48px;
         color: v.$clr-white;
         fill: currentColor;
-        margin-left: 3px;
+        margin-left: 6px; // Optical centering for a 48px play icon
         transition: color v.$transition-base;
+      }
+
+      @include m.respond(md) {
+        width: 64px;
+        height: 64px;
+        
+        svg {
+          width: 28px;
+          height: 28px;
+          margin-left: 4px;
+        }
       }
     }
   }

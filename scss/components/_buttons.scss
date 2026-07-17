@@ -4,6 +4,7 @@
 // ==========================================================================
 
 @use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
 
 // --- Explore CTA button ---
 .btn-explore {
@@ -21,6 +22,11 @@
   border-radius: 5px;
   cursor: pointer;
   transition: background v.$transition-base, color v.$transition-base, transform v.$transition-fast;
+
+  @include m.respond(md) {
+    padding: 16px 36px;
+    font-size: 14px;
+  }
 
   &:hover {
     background: transparent;
