@@ -1,89 +1,40 @@
+// ==========================================================================
+// HEADER
+// Fixed transparent header overlaid on top of the hero slider
+// ==========================================================================
+
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
 .header {
-    position: absolute;
-    top: 0;
-    left: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  padding: 36px 0;
 
-    width: 100%;
-    z-index: 1000;
+  .container {
+    @include m.flex-between;
+  }
 
-    padding: 32px 0px;
+  .logo {
+    font-size: 58px;
+    font-weight: 900;
+    color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: opacity v.$transition-base;
 
-    .container {
-        width: min(1280px, 90%);
-        margin: auto;
-
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .logo {
-        font-size: 58px;
-        font-weight: 900;
-        color: white;
-        text-decoration: none;
-        letter-spacing: -1px;
-    }
-
-    .nav-list {
-        display: flex;
-        gap: 38px;
-        align-items: center;
-
-        list-style: none;
-
-        a {
-            color: white;
-            font-size: 16px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: .3s;
-
-            &:hover {
-                opacity: .7;
-            }
-        }
-
-         @media (max-width: 992px) {
-    .nav-list {
-      display: none;
-    }
-
-    .menu-btn {
-      display: flex;
+    &:hover {
+      opacity: 0.8;
     }
   }
-    }
 
-    .group-nav-menu{
-        display: flex;
-        align-items: center;
-        gap: 38px;
-    }
-
-    .menu-btn {
-        width: 60px;
-        height: 60px;
-
-        border: 1px solid rgba(255,255,255,.4);
-        border-radius: 5px;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        background: transparent;
-
-        cursor: pointer;
-
-        transition: .3s;
-
-        &:hover{
-            background: rgba(255,255,255,.12);
-        }
-
-        img{
-            width:32px;
-        }
-    }
+  // --- Right group (nav + menu btn) ---
+  .group-nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+  }
 }

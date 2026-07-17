@@ -1,7 +1,26 @@
-@use "base/reset";
-@use "base/base";
+// ==========================================================================
+// STYLE.SCSS — Main Entrypoint
+// Import order: abstracts → base → components → layout → pages
+// ==========================================================================
 
+// Abstracts (no CSS output — variables & mixins only)
+@use 'abstracts/variables';
+@use 'abstracts/mixins';
 
-@use "layout/header";
+// Base
+@use 'base/reset';
+@use 'base/typography';
+@use 'base/base';
 
+// Components
+@use 'components/buttons';
+@use 'components/cards';
+@use 'components/slider';
 
+// Layout
+@use 'layout/header';
+@use 'layout/navigation';
+@use 'layout/footer';
+
+// Pages
+@use 'pages/home';

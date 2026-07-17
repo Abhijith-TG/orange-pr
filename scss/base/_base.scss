@@ -1,12 +1,17 @@
-.container {
-    width: min(1280px, 90%);
-    margin-inline: auto;
-}
+// ==========================================================================
+// BASE
+// Core global styles: container, body background
+// ==========================================================================
 
-section {
-    padding: 100px 0;
-}
+@use '../abstracts/variables' as v;
 
 body {
-    background: #131212;
+  background-color: v.$clr-dark;
+  color: v.$clr-white;
+  overflow-x: hidden;
+}
+
+.container {
+  width: min(#{v.$container-max}, #{v.$container-pad});
+  margin-inline: auto;
 }

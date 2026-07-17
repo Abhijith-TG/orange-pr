@@ -1,0 +1,18 @@
+// ==========================================================================
+// TYPOGRAPHY
+// Global type scale and font-weight utilities
+// ==========================================================================
+
+@use '../abstracts/variables' as v;
+
+body {
+  font-family: v.$font-primary;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: v.$font-primary;
+  line-height: 1.05;
+  color: v.$clr-white;
+}

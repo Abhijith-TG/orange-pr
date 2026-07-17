@@ -1,0 +1,34 @@
+// ==========================================================================
+// BUTTONS
+// All button variants used across the site
+// ==========================================================================
+
+@use '../abstracts/variables' as v;
+
+// --- Explore CTA button ---
+.btn-explore {
+  display: inline-block;
+  padding: 20px 58px;
+  background: v.$clr-white;
+  color: v.$clr-dark;
+  font-family: v.$font-primary;
+  font-size: 16px;
+  font-weight: v.$fw-bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 2px solid v.$clr-white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background v.$transition-base, color v.$transition-base, transform v.$transition-fast;
+
+  &:hover {
+    background: transparent;
+    color: v.$clr-white;
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}

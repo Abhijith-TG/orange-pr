@@ -1,0 +1,12 @@
+// ==========================================================================
+// FOOTER — placeholder
+// ==========================================================================
+
+@use '../abstracts/variables' as v;
+
+footer {
+  background: v.$clr-darker;
+  padding: 60px 0;
+  color: v.$clr-white-60;
+  font-size: 14px;
+}

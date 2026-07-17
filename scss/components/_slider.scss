@@ -1,0 +1,256 @@
+// ==========================================================================
+// SLIDER
+// Hero fullscreen slider — background fade, content animations, controls
+// ==========================================================================
+
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+// ---- Hero wrapper ----
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 680px;
+  overflow: hidden;
+}
+
+// ---- Individual slide ----
+.slide {
+  @include m.absolute-fill;
+  z-index: 1;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.85s ease, visibility 0.85s ease;
+
+  // ── Background image ──────────────────────────────────────────────────
+  &__bg {
+    @include m.absolute-fill;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    transform: scale(1.05);
+    transition: transform 1.6s cubic-bezier(0.25, 1, 0.5, 1);
+
+    // Left-side gradient so the white text stays readable
+    &::after {
+      content: '';
+      @include m.absolute-fill;
+      background: linear-gradient(90deg,
+          rgba(0, 0, 0, 0.45) 0%,
+          rgba(0, 0, 0, 0.18) 45%,
+          rgba(0, 0, 0, 0.04) 100%);
+    }
+  }
+
+  // ── Content column ────────────────────────────────────────────────────
+  // Pushes all content to the bottom of the viewport
+  &__inner {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    // Space for: explore button + divider + body text
+    padding-bottom: 52px;
+  }
+
+  // ── Main body: headline+desc LEFT, video card RIGHT ───────────────────
+  &__body {
+    display: flex;
+    align-items: flex-end; // bottom-align text block with card
+    justify-content: space-between;
+    gap: 32px;
+    margin-bottom: 28px;
+
+    @include m.respond(lg) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+    }
+  }
+
+  // ── Text side ─────────────────────────────────────────────────────────
+  &__text {
+    flex: 0 0 auto;
+  }
+
+
+  &__headline {
+    display: flex;
+    flex-direction: column;
+    font-size: 128px;
+    line-height: 0.93;
+    letter-spacing: -2px;
+    color: v.$clr-white;
+    margin-bottom: 22px;
+    // entry animation
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease 0.25s, transform 0.7s ease 0.25s;
+
+    // Line 1 — weight 300 (light)
+    .fw-light {
+      font-weight: 300;
+    }
+
+    // Lines 2 & 3 — weight 600 (semibold), matching Figma spec
+    .fw-bold {
+      font-weight: 600;
+    }
+
+    .fw-black {
+      font-weight: 600;
+    }
+  }
+
+  &__desc {
+    max-width: 320px;
+    font-size: 12.5px;
+    line-height: 1.8;
+    color: v.$clr-white-60;
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.7s ease 0.45s, transform 0.7s ease 0.45s;
+  }
+
+  // ── Media (video card) side ───────────────────────────────────────────
+  &__media {
+    flex-shrink: 0;
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.7s ease 0.4s, transform 0.7s ease 0.4s;
+  }
+
+  // ── Thin horizontal divider ───────────────────────────────────────────
+  &__divider {
+    width: 100%;
+    height: 1px;
+    background: v.$clr-white-15;
+    margin-bottom: 24px;
+    opacity: 0;
+    transition: opacity 0.5s ease 0.55s;
+  }
+
+  // ── Bottom row (EXPLORE button) ────────────────────────────────────────
+  &__bottom {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.6s ease 0.65s, transform 0.6s ease 0.65s;
+  }
+
+  // ── Active state ──────────────────────────────────────────────────────
+  &.is-active {
+    opacity: 1;
+    visibility: visible;
+
+    .slide__bg {
+      transform: scale(1);
+    }
+
+    .slide__headline,
+    .slide__desc,
+    .slide__media,
+    .slide__bottom {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .slide__divider {
+      opacity: 1;
+    }
+  }
+}
+
+// ==========================================================================
+// SLIDER CONTROLS PILL
+// Positioned at bottom-right inside the .hero element
+// ==========================================================================
+
+.slider-controls {
+  position: absolute;
+  bottom: 52px;
+  right: 5%;
+  z-index: 20;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between; // Space out arrows and dots to fill width
+  width: 296px;
+  height: 69px;
+  padding: 0 24px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 100px;
+  background: transparent;
+  opacity: 1;
+
+  @include m.respond(md) {
+    bottom: 24px;
+    right: 50%;
+    transform: translateX(50%);
+  }
+}
+
+// Arrow buttons
+.slider-arrow {
+  @include m.flex-center;
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  opacity: 0.75;
+  padding: 0;
+  transition: opacity v.$transition-base;
+  user-select: none;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  // Flips the arrow for the next button (assuming the base icon points left)
+  // If the icon points right, this will flip it left. We can adjust if needed!
+  &.next-arrow img {
+    transform: scaleX(-1);
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+// Dots container
+.slider-dots {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+// Individual dot
+.slider-dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: none;
+  background: v.$clr-white;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  transition: background v.$transition-base, outline-color v.$transition-base;
+
+  // Outer circle is 40px. Dot is 22px. 1px border.
+  // 22 + (8 * 2) + (1 * 2) = 40px total diameter
+  outline: 1px solid transparent;
+  outline-offset: 8px;
+
+  &.is-active {
+    outline-color: v.$clr-white;
+  }
+
+  &:hover:not(.is-active) {
+    background: rgba(255, 255, 255, 0.7);
+  }
+}

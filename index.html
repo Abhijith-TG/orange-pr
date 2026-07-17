@@ -1,69 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Orange PR — Fresh, juicy, and bright public relations agency streamlining media relations for brands.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;500;600;700;900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
-    <title>Orange PR</title>
+    <title>Orange PR — Fresh. Juicy. Bright.</title>
 </head>
-    <body>
-        <header class="header">
-    <div class="container">
 
-        <a href="#" class="logo">
-            ORANGE PR
-        </a>
-        <div class="group-nav-menu">
+<body>
 
-            <nav class="navbar">
-                <ul class="nav-list">
-                    <li><a href="#">HOME</a></li>
-                    <li><a href="#">PR SERVICES</a></li>
-                    <li><a href="#">ABOUT US</a></li>
-                    <li><a href="#">CONTACT</a></li>
-                </ul>
-            </nav>
-            
-            <button class="menu-btn">
-                <img src="./assets/icons/menu.png" alt="Menu">
-            </button>
+    <!-- ==================== HEADER ==================== -->
+    <header class="header">
+        <div class="container">
+            <a href="#" class="logo">Orange PR</a>
+
+            <div class="group-nav-menu">
+                <nav class="navbar">
+                    <ul class="nav-list">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">PR Services</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <button class="menu-btn" aria-label="Open menu">
+                    <img src="./assets/icons/menu.png" alt="">
+                </button>
+            </div>
         </div>
+    </header>
 
-    </div>
-</header>
+    <!-- ==================== MAIN ==================== -->
+    <main>
 
-        <main>
-
+        <!-- ===== HERO SECTION ===== -->
         <section id="hero">
-        </section>
 
-        <section id="about">
-        </section>
+            <div class="hero" id="heroSlider">
 
-        <section id="services">
-        </section>
+                <!-- ─── Slide 1 ─── -->
+                <div class="slide is-active" data-slide="0">
+                    <div class="slide__bg" style="background-image: url('./assets/images/Hero.png');"></div>
+                    <div class="slide__inner">
+                        <div class="container">
 
-        <section id="why">
-        </section>
+                            <div class="slide__body">
+                                <!-- Text -->
+                                <div class="slide__text">
+                                    <h1 class="slide__headline">
+                                        <span class="fw-light">Fresh</span>
+                                        <span class="fw-bold">Juicy</span>
+                                        <span class="fw-black">Bright</span>
+                                    </h1>
+                                    <p class="slide__desc">
+                                        Streamlining Media Relations for Brands. Orange PR manages
+                                        media relations, freeing clients to focus on daily operations,
+                                        while ensuring campaign initiatives are constantly monitored
+                                        and updated for success.
+                                    </p>
+                                </div>
 
-        <section id="testimonials">
-        </section>
+                                <!-- Video card -->
+                                <div class="slide__media">
+                                    <div class="video-card">
+                                        <img src="./assets/images/HeroVideo.png" alt="Orange PR studio session"
+                                            class="video-card__img">
+                                        <div class="video-card__play">
+                                            <div class="play-circle">
+                                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                                    <path d="M5 3l14 9-14 9V3z" />
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-        <section id="contact">
-        </section>
+                            <!-- Divider -->
+                            <div class="slide__divider"></div>
 
-        <section id="newsletter">
-        </section>
+                            <!-- Bottom row -->
+                            <div class="slide__bottom">
+                                <a href="#" class="btn-explore">Explore</a>
+                            </div>
 
-        </main>
+                        </div>
+                    </div>
+                </div>
 
-        <footer>
+                <!-- ─── Slide 2 ─── -->
+                <div class="slide" data-slide="1">
+                    <div class="slide__bg"
+                        style="background-image: url('./assets/images/Hero.png'); filter: hue-rotate(20deg);"></div>
+                    <div class="slide__inner">
+                        <div class="container">
+                            <div class="slide__body">
+                                <div class="slide__text">
+                                    <h1 class="slide__headline">
+                                        <span class="fw-light">Bold</span>
+                                        <span class="fw-bold">Clear</span>
+                                        <span class="fw-black">Loud</span>
+                                    </h1>
+                                    <p class="slide__desc">
+                                        We amplify your voice across every channel — securing
+                                        coverage that converts audiences into loyal advocates
+                                        for your brand.
+                                    </p>
+                                </div>
+                                <div class="slide__media">
+                                    <div class="video-card">
+                                        <img src="./assets/images/HeroVideo.png" alt="Orange PR media session"
+                                            class="video-card__img">
+                                        <div class="video-card__play">
+                                            <div class="play-circle">
+                                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                                    <path d="M5 3l14 9-14 9V3z" />
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slide__divider"></div>
+                            <div class="slide__bottom">
+                                <a href="#" class="btn-explore">Explore</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        </footer>
+                <!-- ─── Slide 3 ─── -->
+                <div class="slide" data-slide="2">
+                    <div class="slide__bg"
+                        style="background-image: url('./assets/images/Hero.png'); filter: hue-rotate(-20deg) brightness(0.9);">
+                    </div>
+                    <div class="slide__inner">
+                        <div class="container">
+                            <div class="slide__body">
+                                <div class="slide__text">
+                                    <h1 class="slide__headline">
+                                        <span class="fw-light">Smart</span>
+                                        <span class="fw-bold">Sharp</span>
+                                        <span class="fw-black">Strategic</span>
+                                    </h1>
+                                    <p class="slide__desc">
+                                        Data-driven PR that delivers measurable results.
+                                        Our team crafts targeted narratives that resonate
+                                        and drive real business outcomes.
+                                    </p>
+                                </div>
+                                <div class="slide__media">
+                                    <div class="video-card">
+                                        <img src="./assets/images/HeroVideo.png" alt="Orange PR strategy session"
+                                            class="video-card__img">
+                                        <div class="video-card__play">
+                                            <div class="play-circle">
+                                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                                    <path d="M5 3l14 9-14 9V3z" />
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slide__divider"></div>
+                            <div class="slide__bottom">
+                                <a href="#" class="btn-explore">Explore</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        <script src="js/main.js"></script>
-    </body>
+                <!-- ─── Slide 4 ─── -->
+                <div class="slide" data-slide="3">
+                    <div class="slide__bg"
+                        style="background-image: url('./assets/images/Hero.png'); filter: hue-rotate(40deg) brightness(0.95);">
+                    </div>
+                    <div class="slide__inner">
+                        <div class="container">
+                            <div class="slide__body">
+                                <div class="slide__text">
+                                    <h1 class="slide__headline">
+                                        <span class="fw-light">Real</span>
+                                        <span class="fw-bold">Raw</span>
+                                        <span class="fw-black">Results</span>
+                                    </h1>
+                                    <p class="slide__desc">
+                                        From press releases to full campaigns — we handle
+                                        everything so you can focus on what matters most:
+                                        growing your brand.
+                                    </p>
+                                </div>
+                                <div class="slide__media">
+                                    <div class="video-card">
+                                        <img src="./assets/images/HeroVideo.png" alt="Orange PR results"
+                                            class="video-card__img">
+                                        <div class="video-card__play">
+                                            <div class="play-circle">
+                                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                                    <path d="M5 3l14 9-14 9V3z" />
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slide__divider"></div>
+                            <div class="slide__bottom">
+                                <a href="#" class="btn-explore">Explore</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ─── Controls ─── -->
+                <div class="slider-controls">
+                    <button class="slider-arrow prev-arrow" id="prevSlide" aria-label="Previous slide">
+                        <img src="./assets/icons/arrow.png" alt="Previous">
+                    </button>
+
+                    <div class="slider-dots" id="sliderDots">
+                        <button class="slider-dot is-active" data-target="0" aria-label="Go to slide 1"></button>
+                        <button class="slider-dot" data-target="1" aria-label="Go to slide 2"></button>
+                        <button class="slider-dot" data-target="2" aria-label="Go to slide 3"></button>
+                        <button class="slider-dot" data-target="3" aria-label="Go to slide 4"></button>
+                    </div>
+
+                    <button class="slider-arrow next-arrow" id="nextSlide" aria-label="Next slide">
+                        <img src="./assets/icons/arrow.png" alt="Next">
+                    </button>
+                </div>
+
+            </div><!-- /.hero -->
+
+        </section><!-- /#hero -->
+
+        <section id="about"></section>
+        <section id="services"></section>
+        <section id="why"></section>
+        <section id="testimonials"></section>
+        <section id="contact"></section>
+        <section id="newsletter"></section>
+
+    </main>
+
+    <footer></footer>
+
+    <script src="js/main.js"></script>
+</body>
+
 </html>

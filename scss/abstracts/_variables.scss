@@ -1,0 +1,39 @@
+// ==========================================================================
+// VARIABLES
+// Brand tokens, colors, typography, spacing, and transitions
+// ==========================================================================
+
+// --- Typography ---
+$font-primary: 'Inter', sans-serif;
+
+$fw-light: 300;
+$fw-regular: 400;
+$fw-medium: 500;
+$fw-semibold: 600;
+$fw-bold: 700;
+$fw-black: 900;
+
+// --- Colors ---
+$clr-white: #ffffff;
+$clr-dark: #131212;
+$clr-darker: #0e0d0d;
+
+$clr-white-60: rgba(255, 255, 255, 0.6);
+$clr-white-40: rgba(255, 255, 255, 0.4);
+$clr-white-15: rgba(255, 255, 255, 0.15);
+$clr-white-08: rgba(255, 255, 255, 0.08);
+
+// --- Transitions ---
+$transition-fast: 0.2s ease;
+$transition-base: 0.3s ease;
+$transition-slow: 0.65s cubic-bezier(0.25, 1, 0.5, 1);
+
+// --- Breakpoints ---
+$bp-sm: 576px;
+$bp-md: 768px;
+$bp-lg: 992px;
+$bp-xl: 1200px;
+
+// --- Layout ---
+$container-max: 1280px;
+$container-pad: 90%;

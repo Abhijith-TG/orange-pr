@@ -1,0 +1,60 @@
+// ==========================================================================
+// NAVIGATION
+// Desktop nav links and mobile hamburger toggle
+// ==========================================================================
+
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.navbar {
+  @include m.respond(lg) {
+    display: none;
+  }
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
+  gap: 38px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  a {
+    color: v.$clr-white;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+    opacity: 0.85;
+    transition: opacity v.$transition-base;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+// --- Grid menu button ---
+.menu-btn {
+  width: 60px;
+  height: 60px;
+  border: 1px solid white;
+  border-radius: 6px;
+  background: transparent;
+  cursor: pointer;
+  @include m.flex-center;
+  transition: background v.$transition-base, border-color v.$transition-base;
+
+  img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    display: block;
+  }
+
+  &:hover {
+    background: v.$clr-white-08;
+    border-color: v.$clr-white-60;
+  }
+}

@@ -1,0 +1,36 @@
+// ==========================================================================
+// MIXINS
+// Reusable patterns for layout and responsive design
+// ==========================================================================
+
+@use 'variables' as v;
+
+// --- Responsive breakpoints ---
+@mixin respond($bp) {
+  @if $bp == sm  { @media (max-width: #{v.$bp-sm})  { @content; } }
+  @if $bp == md  { @media (max-width: #{v.$bp-md})  { @content; } }
+  @if $bp == lg  { @media (max-width: #{v.$bp-lg})  { @content; } }
+  @if $bp == xl  { @media (max-width: #{v.$bp-xl})  { @content; } }
+}
+
+// --- Flex helpers ---
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// --- Absolute fill ---
+@mixin absolute-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
