@@ -1453,6 +1453,7 @@ body {
   color: #ffffff;
   margin: 0 0 auto;
   padding-bottom: clamp(16px, calc(32 / 1920 * 100vw), 32px);
+  padding-top: 90px;
 }
 
 @media (max-width: 768px) {
