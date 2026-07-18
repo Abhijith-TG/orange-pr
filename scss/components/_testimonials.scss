@@ -8,14 +8,13 @@
   text-align: center;
   padding: 0 0 m.fluid(120);
 
-  // Use negative margin to reduce the space without changing the height of the section above
   margin-top: m.fluid(-280);
   position: relative;
   z-index: 2;
 
   @include m.respond(md) {
-    margin-top: 0; // Remove negative margin on mobile to prevent overlapping stacked cards
-    padding: 60px 0; // Balanced vertical padding for mobile
+    margin-top: 0;
+    padding: 60px 0;
   }
 
   &__collage {
@@ -23,8 +22,7 @@
     justify-content: center;
     gap: m.fluid(16);
     margin-bottom: m.fluid(60);
-    // Add some top padding so transformed items don't clip
-    padding-top: m.fluid(40);
+    padding-top: 20px;
     padding-bottom: m.fluid(40);
 
     @include m.respond(md) {
@@ -32,15 +30,15 @@
       max-width: 100%;
       gap: 8px;
       overflow-x: auto;
-      -webkit-overflow-scrolling: touch; // Smooth touch scrolling
+      -webkit-overflow-scrolling: touch;
       justify-content: flex-start;
       padding: 20px;
       margin-bottom: 40px;
 
-      // Hide scrollbars for a clean swipe UI
       &::-webkit-scrollbar {
         display: none;
       }
+
       -ms-overflow-style: none;
       scrollbar-width: none;
     }
@@ -52,11 +50,9 @@
     gap: m.fluid(16);
     flex-shrink: 0;
 
-    // Z-index so it can overlap the title below if needed
     position: relative;
     z-index: 2;
 
-    // Creating the arch effect using translateY
     &--1,
     &--9 {
       transform: translateY(m.fluid(120));
@@ -315,7 +311,7 @@
     }
 
     @include m.respond(md) {
-      width: 44px; // Larger tap target on mobile
+      width: 44px;
       height: 44px;
 
       svg {

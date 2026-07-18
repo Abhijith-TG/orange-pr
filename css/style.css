@@ -1264,12 +1264,14 @@ body {
   padding: clamp(50px, calc(100 / 1920 * 100vw), 100px) 0 clamp(140px, calc(280 / 1920 * 100vw), 280px);
   overflow: hidden;
   min-height: clamp(521.5px, calc(1043 / 1920 * 100vw), 1043px);
+  margin-bottom: clamp(40px, calc(80 / 1920 * 100vw), 80px);
 }
 
 @media (max-width: 768px) {
   .why {
     padding: 80px 0 120px;
     min-height: auto;
+    margin-bottom: 0;
   }
 }
 
@@ -1495,7 +1497,7 @@ body {
   justify-content: center;
   gap: clamp(8px, calc(16 / 1920 * 100vw), 16px);
   margin-bottom: clamp(30px, calc(60 / 1920 * 100vw), 60px);
-  padding-top: clamp(20px, calc(40 / 1920 * 100vw), 40px);
+  padding-top: 20px;
   padding-bottom: clamp(20px, calc(40 / 1920 * 100vw), 40px);
 }
 
