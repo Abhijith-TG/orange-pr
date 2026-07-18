@@ -534,7 +534,7 @@ body {
 }
 .about__watermark {
   position: absolute;
-  top: 5%;
+  top: 4px;
   right: -5%;
   font-size: clamp(100px, 260 / 1920 * 100vw, 260px);
   font-weight: 900;
@@ -566,9 +566,6 @@ body {
     margin-bottom: 60px;
   }
 }
-.about__col-left {
-  display: block;
-}
 .about__title {
   font-family: "Inter", sans-serif;
   font-size: clamp(32px, calc(64 / 1920 * 100vw), 64px);
@@ -586,13 +583,39 @@ body {
     max-width: none;
   }
 }
+.about__col-left {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: clamp(45px, calc(90 / 1920 * 100vw), 90px);
+  overflow: visible;
+}
+.about__shapes-panel {
+  display: grid;
+  grid-template-columns: clamp(29px, calc(58 / 1920 * 100vw), 58px) 1fr;
+  column-gap: clamp(5px, calc(10 / 1920 * 100vw), 10px);
+  align-content: space-between;
+  width: clamp(69px, calc(138 / 1920 * 100vw), 138px);
+  height: clamp(234px, calc(468 / 1920 * 100vw), 468px);
+  flex-shrink: 0;
+  overflow: visible;
+  pointer-events: none;
+  user-select: none;
+  margin-left: calc(-1 * clamp(85px, calc(170 / 1920 * 100vw), 170px));
+}
+@media (max-width: 768px) {
+  .about__shapes-panel {
+    display: none;
+  }
+}
 .about__image-wrapper {
   position: relative;
-  width: 100%;
+  flex: 1;
   max-width: clamp(189.5px, calc(379 / 1920 * 100vw), 379px);
   height: clamp(234px, calc(468 / 1920 * 100vw), 468px);
   border-radius: 4px;
   overflow: hidden;
+  z-index: 1;
 }
 @media (max-width: 768px) {
   .about__image-wrapper {
@@ -612,20 +635,7 @@ body {
   z-index: 1;
 }
 .about .about__pattern {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 55%;
-  height: 100%;
-  pointer-events: none;
-  user-select: none;
-  z-index: 2;
-}
-.about .about__pattern img {
-  width: 100%;
-  height: 100%;
-  object-fit: fill;
-  display: block;
+  display: none;
 }
 .about__col-right {
   display: flex;
@@ -753,6 +763,26 @@ body {
   .stat-item__number {
     font-size: 32px;
   }
+}
+
+.about-shape {
+  background: #FAFAFA;
+}
+.about-shape--tri {
+  width: clamp(29px, calc(58 / 1920 * 100vw), 58px);
+  height: clamp(29px, calc(58 / 1920 * 100vw), 58px);
+  clip-path: polygon(0 0, 0 100%, 100% 100%);
+}
+.about-shape--semi {
+  width: clamp(69px, calc(138 / 1920 * 100vw), 138px);
+  height: clamp(34.5px, calc(69 / 1920 * 100vw), 69px);
+  border-radius: clamp(34.5px, calc(69 / 1920 * 100vw), 69px) clamp(34.5px, calc(69 / 1920 * 100vw), 69px) 0 0;
+}
+.about-shape--circle {
+  width: clamp(27px, calc(54 / 1920 * 100vw), 54px);
+  height: clamp(27px, calc(54 / 1920 * 100vw), 54px);
+  border-radius: 50%;
+  align-self: center;
 }
 
 .services {

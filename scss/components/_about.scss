@@ -16,7 +16,7 @@
 
   &__watermark {
     position: absolute;
-    top: 5%;
+    top: 4px; // 4px gap from the hero section above
     right: -5%;
     font-size: clamp(100px, calc(260 / #{v.$design-w} * 100vw), 260px);
     font-weight: 900;
@@ -37,6 +37,7 @@
 
   &__grid {
     display: grid;
+    // Left column = image width only; shapes visually overflow outside via negative margin
     grid-template-columns: m.fluid(379) 1fr;
     column-gap: m.fluid(104);
     align-items: start;
@@ -48,10 +49,6 @@
       row-gap: 40px;
       margin-bottom: 60px;
     }
-  }
-
-  &__col-left {
-    display: block;
   }
 
   &__title {
@@ -71,13 +68,42 @@
     }
   }
 
+  &__col-left {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: m.fluid(90); // 90px gap between shapes and image at 1920px, scales down
+    overflow: visible;
+  }
+
+  &__shapes-panel {
+    // 2-column grid: [triangle col] [dome/circle col]
+    // align-content: space-between distributes 6 rows evenly within the panel height
+    display: grid;
+    grid-template-columns: m.fluid(58) 1fr;
+    column-gap: m.fluid(10); // gap between tri and shape in each row
+    align-content: space-between; // spread 6 rows across panel height
+    width: m.fluid(138);
+    height: m.fluid(468); // matches image height
+    flex-shrink: 0;
+    overflow: visible; // semicircle dome overflows right into the gap
+    pointer-events: none;
+    user-select: none;
+    margin-left: calc(-1 * #{m.fluid(170)});
+
+    @include m.respond(md) {
+      display: none;
+    }
+  }
+
   &__image-wrapper {
     position: relative;
-    width: 100%;
+    flex: 1;
     max-width: m.fluid(379);
     height: m.fluid(468);
     border-radius: 4px;
     overflow: hidden;
+    z-index: 1;
 
     @include m.respond(md) {
       max-width: 100%;
@@ -97,22 +123,9 @@
     z-index: 1;
   }
 
+  // Remove old pattern rule — replaced by .about__shapes-panel
   .about__pattern {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 55%;
-    height: 100%;
-    pointer-events: none;
-    user-select: none;
-    z-index: 2;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: fill;
-      display: block;
-    }
+    display: none;
   }
 
   &__col-right {
@@ -245,5 +258,41 @@
     @include m.respond(md) {
       font-size: 32px;
     }
+  }
+}
+
+$sh: #FAFAFA;
+
+// ==========================================================================
+// ABOUT — Shapes panel items
+// Grid auto-places pairs: col 1 = triangle, col 2 = semicircle or circle.
+// Semicircle overflows col 2 rightward (overflow:visible) — dome extends
+// into the gap between shapes panel and image.
+// ==========================================================================
+
+.about-shape {
+  background: $sh;
+
+  // Right-angled triangle, 58×58px, bottom-left right angle
+  &--tri {
+    width: m.fluid(58);
+    height: m.fluid(58);
+    clip-path: polygon(0 0, 0 100%, 100% 100%);
+  }
+
+  // Semicircle, 138×69px, dome facing up.
+  // Wider than col 2 (1fr ≈ 70px) — overflows right into the gap.
+  &--semi {
+    width: m.fluid(138);
+    height: m.fluid(69);
+    border-radius: m.fluid(69) m.fluid(69) 0 0;
+  }
+
+  // Circle, 54×54px. Sits in col 2, centred vertically with triangle.
+  &--circle {
+    width: m.fluid(54);
+    height: m.fluid(54);
+    border-radius: 50%;
+    align-self: center;
   }
 }
