@@ -38,3 +38,34 @@
     transform: translateY(0);
   }
 }
+
+// --- Read More button (about, services, etc.) ---
+.btn-readmore {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 220px;
+  height: 84px;
+  background-color: v.$clr-dark;
+  color: v.$clr-white;
+  font-family: v.$font-primary;
+  font-size: 16px;
+  font-weight: v.$fw-semibold;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 2px solid v.$clr-dark;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color v.$transition-base, color v.$transition-base, border-color v.$transition-base;
+
+  @include m.respond(md) {
+    width: 180px;
+    height: 64px;
+    font-size: 14px;
+  }
+
+  &:hover {
+    background-color: transparent;
+    color: v.$clr-dark;
+  }
+}
