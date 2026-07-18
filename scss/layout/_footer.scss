@@ -1,12 +1,218 @@
-// ==========================================================================
-// FOOTER — placeholder
-// ==========================================================================
-
 @use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
 
-footer {
-  background: v.$clr-darker;
-  padding: 60px 0;
-  color: v.$clr-white-60;
-  font-size: 14px;
+.footer {
+  background-color: #000000;
+  color: v.$clr-white;
+  padding: m.fluid(120) 0 m.fluid(40);
+  border-top: 1px solid #474747;
+  border-bottom: 1px solid #474747;
+  overflow-x: hidden;
+  text-align: start;
+
+  @include m.respond(md) {
+    padding: 80px 0 32px;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: m.fluid(60);
+    padding-bottom: m.fluid(60);
+
+    @include m.respond(md) {
+      flex-direction: column;
+      gap: 40px;
+      padding-bottom: 40px;
+    }
+  }
+
+  &__brand {
+    max-width: m.fluid(612);
+  }
+
+  &__logo {
+    font-family: v.$font-primary;
+    font-weight: 900;
+    font-size: m.fluid-font(58, 32px);
+    line-height: 1;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: v.$clr-white;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: m.fluid(24);
+
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+
+  &__tagline {
+    font-family: v.$font-primary;
+    font-weight: 400;
+    font-size: m.fluid-font(16, 14px);
+    line-height: m.fluid(36, 24px);
+    letter-spacing: 0;
+    color: v.$clr-white;
+    margin: 0;
+  }
+
+  &__nav {
+    display: flex;
+    gap: m.fluid(80);
+
+    @include m.respond(md) {
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+  }
+
+  &__col {
+    min-width: m.fluid(160);
+  }
+
+  &__col-title {
+    font-family: v.$font-primary;
+    font-weight: 700;
+    font-size: m.fluid-font(18, 16px);
+    line-height: 1;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: v.$clr-white;
+    margin: 0 0 m.fluid(24);
+
+    @include m.respond(md) {
+      margin-bottom: 16px;
+    }
+  }
+
+  &__links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: m.fluid(16);
+  }
+
+  &__link {
+    font-family: v.$font-primary;
+    font-weight: 400;
+    font-size: m.fluid-font(16, 14px);
+    line-height: 1;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: v.$clr-white;
+    text-decoration: none;
+    transition: opacity v.$transition-base;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: m.fluid(12);
+    font-family: v.$font-primary;
+    font-weight: 400;
+    font-size: m.fluid-font(16, 14px);
+    line-height: 1;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: v.$clr-white;
+
+    span {
+      line-height: 1.6;
+    }
+  }
+
+  &__contact-icon {
+    width: m.fluid(18);
+    height: m.fluid(18);
+    flex-shrink: 0;
+    margin-top: 2px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    opacity: 1;
+
+    @include m.respond(md) {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__socials {
+    display: flex;
+    gap: m.fluid(16);
+    align-items: center;
+
+    @include m.respond(md) {
+      gap: 12px;
+    }
+  }
+
+  &__social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transition: opacity v.$transition-base;
+
+    img {
+      width: m.fluid(20);
+      height: m.fluid(20);
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+
+      @include m.respond(md) {
+        width: 18px;
+        height: 18px;
+      }
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: m.fluid(32);
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100vw;
+      height: 1px;
+      background-color: #474747;
+    }
+
+    @include m.respond(md) {
+      flex-direction: column;
+      gap: 16px;
+      padding-top: 24px;
+      text-align: start;
+      align-items: flex-start;
+    }
+  }
+
+  &__copy {
+    font-family: 'Montserrat', v.$font-primary, sans-serif;
+    font-weight: 400;
+    font-size: m.fluid-font(16, 12px);
+    line-height: m.fluid(32, 24px);
+    letter-spacing: 0;
+    color: v.$clr-white;
+    margin: 0;
+  }
 }

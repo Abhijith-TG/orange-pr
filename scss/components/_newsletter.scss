@@ -1,0 +1,128 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.newsletter {
+  background-color: #000000;
+  padding: m.fluid(140) 0;
+
+  @include m.respond(md) {
+    padding: 80px 0;
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: m.fluid(40);
+
+    @include m.respond(md) {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+
+  &__content {
+    max-width: m.fluid(580);
+  }
+
+  &__title {
+    font-family: v.$font-primary;
+    font-weight: 600;
+    font-size: m.fluid-font(64, 32px);
+    line-height: 1;
+    color: v.$clr-white;
+    margin-bottom: m.fluid(24);
+
+    @include m.respond(md) {
+      margin-bottom: 16px;
+    }
+  }
+
+  &__desc {
+    font-family: v.$font-primary;
+    font-weight: 400;
+    font-size: m.fluid-font(18, 16px);
+    line-height: m.fluid(28, 24px);
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+  }
+
+  &__form {
+    position: relative;
+    width: m.fluid(813);
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  &__input {
+    width: 100%;
+    height: m.fluid(77);
+    background-color: #000000;
+    border: 1px solid #474747;
+    border-radius: m.fluid(10);
+    padding: 0 m.fluid(80) 0 m.fluid(32);
+    font-family: 'Roboto', v.$font-primary, sans-serif;
+    font-weight: 400;
+    font-size: m.fluid-font(18, 16px);
+    color: v.$clr-white;
+    transition: border-color v.$transition-base;
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    &:focus {
+      outline: none;
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    @include m.respond(md) {
+      height: 60px;
+      padding: 0 60px 0 20px;
+      border-radius: 8px;
+    }
+  }
+
+  &__submit {
+    position: absolute;
+    right: m.fluid(20);
+    background: transparent;
+    border: none;
+    width: m.fluid(48);
+    height: m.fluid(48);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: v.$clr-white;
+    padding: 0;
+    transition: transform v.$transition-base, color v.$transition-base;
+
+    svg {
+      width: m.fluid(32);
+      height: m.fluid(32);
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    &:hover {
+      transform: translateX(5px);
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    @include m.respond(md) {
+      width: 40px;
+      height: 40px;
+      right: 12px;
+      
+      svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+}

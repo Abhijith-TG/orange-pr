@@ -79,6 +79,28 @@
   if (hero) {
     hero.addEventListener('mouseenter', stopAutoplay);
     hero.addEventListener('mouseleave', startAutoplay);
+    
+    // ── Swipe gestures ──────────────────────────────────────────────────────
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    hero.addEventListener('touchstart', e => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, {passive: true});
+
+    hero.addEventListener('touchend', e => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, {passive: true});
+
+    function handleSwipe() {
+      if (touchEndX < touchStartX - 50) {
+        goTo(current + 1); startAutoplay();
+      }
+      if (touchEndX > touchStartX + 50) {
+        goTo(current - 1); startAutoplay();
+      }
+    }
   }
 
   // ── Init ────────────────────────────────────────────────────────────────

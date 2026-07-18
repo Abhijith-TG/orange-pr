@@ -78,6 +78,28 @@
   slider.addEventListener('mouseenter', stopAutoplay);
   slider.addEventListener('mouseleave', startAutoplay);
 
+  // ── Swipe gestures ────────────────────────────────────────────────────────
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  slider.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, {passive: true});
+
+  slider.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  }, {passive: true});
+
+  function handleSwipe() {
+    if (touchEndX < touchStartX - 50) {
+      goTo(current + 1); startAutoplay();
+    }
+    if (touchEndX > touchStartX + 50) {
+      goTo(current - 1); startAutoplay();
+    }
+  }
+
   // ── Init ────────────────────────────────────────────────────────────────
   startAutoplay();
 

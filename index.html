@@ -8,7 +8,7 @@
         content="Orange PR — Fresh, juicy, and bright public relations agency streamlining media relations for brands.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;500;600;700;900&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;500;600;700;900&family=Montserrat:wght@400&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="icon" type="image/png" href="./assets/images/logo.png">
@@ -584,11 +584,93 @@
                     </div>
                 </div>
             </section>
-            <section id="newsletter"></section>
+            <section id="newsletter" class="newsletter">
+                <div class="container">
+                    <div class="newsletter__wrapper">
+                        <div class="newsletter__content">
+                            <h2 class="newsletter__title">Newsletter</h2>
+                            <p class="newsletter__desc">
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.
+                            </p>
+                        </div>
+                        <form class="newsletter__form">
+                            <input type="email" class="newsletter__input" placeholder="Enter your email address">
+                            <button type="submit" class="newsletter__submit" aria-label="Subscribe">
+                                <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </section>
 
     </main>
 
-    <footer></footer>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__top">
+                <div class="footer__brand">
+                    <a href="#" class="footer__logo">ORANGE PR</a>
+                    <p class="footer__tagline">
+                        Orange PR is Dubai's leading communication company, specializing in cultural, lifestyle, fashion and art. Our agency was founded on a culture of smart strategic thinking, creativity, and innovation that delivers successful solutions to our local, national, and international customer base. Our ability to create and execute dynamic, forward-thinking PR campaigns quickly, while maintaining quality, increasing visibility, and achieving the targeted objectives or aims, is the key to our success.
+                    </p>
+                </div>
+
+                <div class="footer__nav">
+                    <div class="footer__col">
+                        <h4 class="footer__col-title">Quick Links</h4>
+                        <ul class="footer__links">
+                            <li><a href="#" class="footer__link">HOME</a></li>
+                            <li><a href="#services" class="footer__link">PR SERVICES</a></li>
+                            <li><a href="#about" class="footer__link">ABOUT US</a></li>
+                            <li><a href="#contact" class="footer__link">CONTACT US</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer__col">
+                        <h4 class="footer__col-title">Contact Info</h4>
+                        <ul class="footer__links">
+                            <li class="footer__contact-item">
+                                <img src="./assets/icons/location.png" alt="" class="footer__contact-icon">
+                                <span>FD - First Floor<br>Incubator Building<br>Masdar City, Abu Dhabi<br>United Arab Emirates</span>
+                            </li>
+                            <li class="footer__contact-item">
+                                <img src="./assets/icons/phone.png" alt="" class="footer__contact-icon">
+                                <span>+971 58 58 7 3195</span>
+                            </li>
+                            <li class="footer__contact-item">
+                                <img src="./assets/icons/mail.png" alt="" class="footer__contact-icon">
+                                <span>maria@orangepragency.com</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p class="footer__copy">&copy; 2025 Orange PR Agency. &nbsp;|&nbsp; Design &amp; Development by : MightyWarners Technologies</p>
+                <div class="footer__socials">
+                    <a href="#" class="footer__social-link" aria-label="Facebook">
+                        <img src="./assets/icons/fb.png" alt="Facebook">
+                    </a>
+                    <a href="#" class="footer__social-link" aria-label="Twitter">
+                        <img src="./assets/icons/twitter.png" alt="Twitter">
+                    </a>
+                    <a href="#" class="footer__social-link" aria-label="LinkedIn">
+                        <img src="./assets/icons/linkedIn.png" alt="LinkedIn">
+                    </a>
+                    <a href="#" class="footer__social-link" aria-label="Instagram">
+                        <img src="./assets/icons/instagram.png" alt="Instagram">
+                    </a>
+                    <a href="#" class="footer__social-link" aria-label="Pinterest">
+                        <img src="./assets/icons/pinterest.png" alt="Pinterest">
+                    </a>
+                    <a href="#" class="footer__social-link" aria-label="YouTube">
+                        <img src="./assets/icons/youtube.png" alt="YouTube">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script src="js/slider.js"></script>
     <script src="js/counter.js"></script>
