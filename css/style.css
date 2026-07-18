@@ -1006,15 +1006,25 @@ body {
 .services__card-overlay::before {
   content: "";
   position: absolute;
-  bottom: 0;
+  inset: 0;
+  z-index: 1;
+  /* Dark gradient for readability */
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.15), transparent);
+}
+.services__card-overlay::after {
+  content: "";
+  position: absolute;
   left: 0;
   right: 0;
-  height: 40%;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.18);
-  pointer-events: none;
+  bottom: 0;
+  height: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  /* Fade only the blur */
+  mask-image: linear-gradient(to top, black 60%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to top, black 60%, transparent 100%);
+  z-index: 0;
 }
 .services__card-title {
   margin: 0;

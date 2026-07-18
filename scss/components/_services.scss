@@ -236,20 +236,43 @@
 
     // Glassmorphic panel at the bottom
     &::before {
-      content: '';
+      content: "";
       position: absolute;
-      bottom: 0;
+      inset: 0;
+      z-index: 1;
+
+      /* Dark gradient for readability */
+      background: linear-gradient(to top,
+          rgba(0, 0, 0, .35),
+          rgba(0, 0, 0, .15),
+          transparent);
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+
       left: 0;
       right: 0;
-      height: 40%; // Slightly taller to fit text well
+      bottom: 0;
 
-      // The exact properties from the snippet:
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      // border-top: 1px solid rgba(255, 255, 255, 0.15); // Distinct glass edge
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.18); // Flipped shadow to cast upwards from the glass edge
-      pointer-events: none;
+      height: 50%;
+
+      background: rgba(255, 255, 255, .06);
+
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+
+      /* Fade only the blur */
+      mask-image: linear-gradient(to top,
+          black 60%,
+          transparent 100%);
+
+      -webkit-mask-image: linear-gradient(to top,
+          black 60%,
+          transparent 100%);
+
+      z-index: 0;
     }
   }
 
