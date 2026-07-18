@@ -151,6 +151,7 @@
     border-radius: m.fluid(8);
     object-fit: cover;
     flex-shrink: 0;
+    background-color: #EFEFEF;
 
     @include m.respond(md) {
       width: 110px;

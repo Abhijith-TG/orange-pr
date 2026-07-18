@@ -1,0 +1,184 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.contact {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: m.fluid(160) 0;
+
+  @include m.respond(md) {
+    padding: 80px 0;
+  }
+
+  &__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    z-index: 0;
+
+    &-img {
+      width: 50%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+
+      @include m.respond(md) {
+        width: 100%;
+        height: 50%; // Stack on mobile
+      }
+    }
+
+    &-solid {
+      width: 50%;
+      height: 100%;
+      background-color: #EFEFEF;
+
+      @include m.respond(md) {
+        width: 100%;
+        height: 50%; // Stack on mobile
+      }
+    }
+
+    @include m.respond(md) {
+      flex-direction: column;
+    }
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: flex-end;
+
+    @include m.respond(md) {
+      justify-content: center;
+    }
+  }
+
+  &__card {
+    width: m.fluid(1037);
+    background-color: v.$clr-white;
+    border-radius: m.fluid(20);
+    padding: m.fluid(53);
+    box-shadow: 0 m.fluid(20) m.fluid(60) rgba(0, 0, 0, 0.05);
+
+    @include m.respond(md) {
+      width: 100%;
+      padding: 32px 20px;
+      border-radius: 12px;
+    }
+  }
+
+  &__title {
+    font-family: v.$font-primary;
+    font-weight: 600;
+    font-size: m.fluid-font(64, 32px);
+    line-height: 1;
+    color: v.$clr-dark;
+    text-transform: uppercase;
+    margin-bottom: m.fluid(45);
+
+    @include m.respond(md) {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: m.fluid(27);
+
+    @include m.respond(md) {
+      gap: 16px;
+    }
+  }
+
+  &__row {
+    display: flex;
+    gap: m.fluid(33);
+
+    @include m.respond(sm) {
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+
+  &__input {
+    width: 100%;
+    height: m.fluid(66);
+    background: transparent;
+    border: 1px solid #D9D9D9;
+    border-radius: m.fluid(5);
+    padding: 0 m.fluid(20);
+    font-family: v.$font-primary;
+    font-weight: 500;
+    font-size: m.fluid-font(16, 14px);
+    color: v.$clr-dark;
+    transition: border-color v.$transition-base;
+
+    &::placeholder {
+      color: rgba(19, 18, 18, 0.5);
+    }
+
+    &:focus {
+      outline: none;
+      border-color: v.$clr-dark;
+    }
+
+    @include m.respond(md) {
+      height: 54px;
+      padding: 0 16px;
+      border-radius: 4px;
+    }
+  }
+
+  &__textarea {
+    height: m.fluid(154);
+    padding: m.fluid(20);
+    resize: none;
+
+    @include m.respond(md) {
+      height: 120px;
+      padding: 16px;
+    }
+  }
+
+  &__submit {
+    margin-top: m.fluid(14); // 41px total gap - 27px flex gap = 14px extra
+    width: m.fluid(188);
+    height: m.fluid(84);
+    background-color: #000000;
+    color: v.$clr-white;
+    border: none;
+    border-radius: m.fluid(5);
+    font-family: v.$font-primary;
+    font-weight: 600;
+    font-size: m.fluid-font(16, 14px);
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color v.$transition-base, transform v.$transition-base;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+
+    @include m.respond(md) {
+      margin-top: 8px;
+      width: 100%;
+      height: 54px;
+      border-radius: 4px;
+    }
+  }
+}
