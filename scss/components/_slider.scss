@@ -132,7 +132,7 @@
     .fw-light {
       font-weight: 300;
       padding: m.fluid(16) 0; // More padding top and bottom than others
-      
+
       @include m.respond(md) {
         padding: 8px 0;
       }

@@ -110,6 +110,13 @@
     }
   }
 
+  &__group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+  }
+
   &__input {
     width: 100%;
     height: m.fluid(66);
@@ -130,6 +137,14 @@
     &:focus {
       outline: none;
       border-color: v.$clr-dark;
+    }
+
+    &.is-invalid {
+      border-color: #E05252;
+
+      &:focus {
+        border-color: #E05252;
+      }
     }
 
     @include m.respond(md) {

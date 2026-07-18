@@ -361,19 +361,7 @@
     &-icon {
       width: m.fluid(32);
       height: m.fluid(32);
-      background-color: #466378; // The exact color requested
-      
-      // Use the arrow as a mask so we can color it arbitrarily
-      mask-image: url('../assets/icons/arrow.png');
-      mask-size: contain;
-      mask-position: center;
-      mask-repeat: no-repeat;
-      -webkit-mask-image: url('../assets/icons/arrow.png');
-      -webkit-mask-size: contain;
-      -webkit-mask-position: center;
-      -webkit-mask-repeat: no-repeat;
-
-      transform: scaleX(-1); // Flip the back arrow to point right
+      object-fit: contain;
     }
 
     .services__card.is-active &,

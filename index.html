@@ -261,17 +261,15 @@
                 <div class="container">
                     <h2 class="about__title">Think. Create.<br>Promote.</h2>
                     <div class="about__grid">
-                        <!-- Left Column -->
                         <div class="about__col-left">
-                            <!-- CSS-built geometric shapes to the left of the image -->
                             <div class="about__shapes-panel" aria-hidden="true">
-                                <!-- Group 1: Triangle | Semicircle -->
+
                                 <div class="about-shape about-shape--tri about-shape--t1"></div>
                                 <div class="about-shape about-shape--semi about-shape--s1"></div>
-                                <!-- Group 2: Triangle | Circle -->
+
                                 <div class="about-shape about-shape--tri about-shape--t2"></div>
                                 <div class="about-shape about-shape--circle about-shape--c1"></div>
-                                <!-- Group 3: Triangle | Semicircle -->
+
                                 <div class="about-shape about-shape--tri about-shape--t3"></div>
                                 <div class="about-shape about-shape--semi about-shape--s2"></div>
 
@@ -607,15 +605,25 @@
                             <h2 class="contact__title">GET IN TOUCH</h2>
                             <form class="contact__form">
                                 <div class="contact__row">
-                                    <input type="text" class="contact__input" placeholder="First Name">
-                                    <input type="text" class="contact__input" placeholder="Last Name">
+                                    <div class="contact__group">
+                                        <input type="text" class="contact__input" placeholder="First Name">
+                                    </div>
+                                    <div class="contact__group">
+                                        <input type="text" class="contact__input" placeholder="Last Name">
+                                    </div>
                                 </div>
                                 <div class="contact__row">
-                                    <input type="email" class="contact__input" placeholder="Email">
-                                    <input type="tel" class="contact__input" placeholder="Phone">
+                                    <div class="contact__group">
+                                        <input type="email" class="contact__input" placeholder="Email">
+                                    </div>
+                                    <div class="contact__group">
+                                        <input type="tel" class="contact__input" placeholder="Phone">
+                                    </div>
                                 </div>
-                                <textarea class="contact__input contact__textarea"
-                                    placeholder="Enter your comments here any?"></textarea>
+                                <div class="contact__group">
+                                    <textarea class="contact__input contact__textarea"
+                                        placeholder="Enter your comments here any?"></textarea>
+                                </div>
                                 <button type="submit" class="contact__submit">SUBMIT</button>
                             </form>
                         </div>
@@ -725,6 +733,7 @@
     <script src="./js/counter.js"></script>
     <script src="./js/services.js"></script>
     <script src="./js/testimonials.js"></script>
+    <script src="./js/contact.js"></script>
 </body>
 
 </html>

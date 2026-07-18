@@ -4,12 +4,18 @@
 .testimonials {
   background-color: v.$clr-white;
   color: v.$clr-dark;
-  padding: m.fluid(120) 0;
   overflow: hidden;
   text-align: center;
+  padding: 0 0 m.fluid(120);
+
+  // Use negative margin to reduce the space without changing the height of the section above
+  margin-top: m.fluid(-280);
+  position: relative;
+  z-index: 2;
 
   @include m.respond(md) {
-    padding: 60px 0;
+    margin-top: 0; // Remove negative margin on mobile to prevent overlapping stacked cards
+    padding: 60px 0; // Balanced vertical padding for mobile
   }
 
   &__collage {
@@ -22,11 +28,21 @@
     padding-bottom: m.fluid(40);
 
     @include m.respond(md) {
+      width: 100%;
+      max-width: 100%;
       gap: 8px;
       overflow-x: auto;
+      -webkit-overflow-scrolling: touch; // Smooth touch scrolling
       justify-content: flex-start;
       padding: 20px;
       margin-bottom: 40px;
+
+      // Hide scrollbars for a clean swipe UI
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      -ms-overflow-style: none;
+      scrollbar-width: none;
     }
   }
 
@@ -35,17 +51,35 @@
     flex-direction: column;
     gap: m.fluid(16);
     flex-shrink: 0;
-    
+
     // Z-index so it can overlap the title below if needed
     position: relative;
     z-index: 2;
 
     // Creating the arch effect using translateY
-    &--1, &--9 { transform: translateY(m.fluid(120)); }
-    &--2, &--8 { transform: translateY(m.fluid(70)); }
-    &--3, &--7 { transform: translateY(m.fluid(35)); }
-    &--4, &--6 { transform: translateY(m.fluid(10)); }
-    &--5 { transform: translateY(0); }
+    &--1,
+    &--9 {
+      transform: translateY(m.fluid(120));
+    }
+
+    &--2,
+    &--8 {
+      transform: translateY(m.fluid(70));
+    }
+
+    &--3,
+    &--7 {
+      transform: translateY(m.fluid(35));
+    }
+
+    &--4,
+    &--6 {
+      transform: translateY(m.fluid(10));
+    }
+
+    &--5 {
+      transform: translateY(0);
+    }
 
     @include m.respond(md) {
       transform: none !important;
@@ -75,7 +109,7 @@
     &--tall {
       height: m.fluid(111);
     }
-    
+
     &--short {
       height: m.fluid(55);
     }
@@ -92,8 +126,14 @@
       border-bottom-right-radius: 8px;
       border-bottom-left-radius: 8px;
 
-      &--tall { height: 86px; }
-      &--short { height: 42px; }
+      &--tall {
+        height: 86px;
+      }
+
+      &--short {
+        height: 42px;
+      }
+
       &--bottom {
         border-top-right-radius: 8px;
         border-top-left-radius: 8px;
@@ -107,13 +147,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: relative; 
+    position: relative;
     z-index: 1;
     margin-top: m.fluid(-120);
 
     @include m.respond(md) {
       margin-top: 0;
       padding: 0 20px;
+      max-width: 100%;
+      width: 100%;
     }
   }
 
@@ -217,7 +259,7 @@
     font-weight: 600;
     font-size: m.fluid-font(20, 16px);
     text-transform: uppercase;
-    color: rgba(19, 18, 18, 0.4); 
+    color: rgba(19, 18, 18, 0.4);
 
     @include m.respond(md) {
       gap: 12px;
@@ -233,15 +275,16 @@
   &__page {
     cursor: pointer;
     transition: color v.$transition-base;
-    
+
     &.is-active {
       color: v.$clr-dark;
     }
+
     &:hover:not(.is-active) {
       color: rgba(19, 18, 18, 0.7);
     }
   }
-  
+
   &__sep {
     user-select: none;
   }
@@ -262,13 +305,23 @@
     &:hover {
       opacity: 1;
     }
-    
+
     svg {
       width: m.fluid(24);
       height: m.fluid(24);
       fill: none;
       stroke: v.$clr-dark;
       stroke-width: 2;
+    }
+
+    @include m.respond(md) {
+      width: 44px; // Larger tap target on mobile
+      height: 44px;
+
+      svg {
+        width: 24px;
+        height: 24px;
+      }
     }
   }
 }
