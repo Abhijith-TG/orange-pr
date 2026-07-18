@@ -1,22 +1,23 @@
 @use '../abstracts/variables' as v;
 @use '../abstracts/mixins' as m;
 
-$card-active-w: 564px;
-$card-active-h: 763px;
-$card-collapsed-w: 180px;
-
 .services {
   background-color: v.$clr-white;
   color: v.$clr-dark;
   overflow: hidden;
+  min-height: m.fluid(v.$design-section-h);
+
+  @include m.respond(md) {
+    min-height: auto;
+  }
 
   &__grid {
     display: grid;
     grid-template-columns: 1fr auto;
-    gap: 60px;
+    gap: m.fluid(60);
     align-items: start;
 
-    @include m.respond(lg) {
+    @include m.respond(md) {
       grid-template-columns: 1fr;
       gap: 48px;
     }
@@ -26,35 +27,37 @@ $card-collapsed-w: 180px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    max-width: 520px;
+    max-width: m.fluid(520);
+    min-width: 0;
+
+    @include m.respond(md) {
+      max-width: none;
+    }
   }
 
   &__title {
     font-family: v.$font-primary;
     font-weight: v.$fw-semibold;
-    font-size: 64px;
+    font-size: m.fluid-font(64, 32px);
     line-height: 100%;
     letter-spacing: 0;
     color: #1A1A1A;
-    margin: 0 0 32px;
-
-    @include m.respond(lg) {
-      font-size: 48px;
-    }
+    margin: 0 0 m.fluid(32);
 
     @include m.respond(md) {
       font-size: 36px;
+      margin-bottom: 24px;
     }
   }
 
   &__tagline {
     font-family: v.$font-primary;
     font-weight: v.$fw-medium;
-    font-size: 36px;
+    font-size: m.fluid-font(36, 22px);
     line-height: 100%;
     letter-spacing: 0;
     color: #466378;
-    margin: 0 0 24px;
+    margin: 0 0 m.fluid(24);
 
     @include m.respond(md) {
       font-size: 28px;
@@ -64,24 +67,25 @@ $card-collapsed-w: 180px;
   &__desc {
     font-family: v.$font-primary;
     font-weight: v.$fw-regular;
-    font-size: 24px;
-    line-height: 36px;
+    font-size: m.fluid-font(24, 16px);
+    line-height: m.fluid(36);
     letter-spacing: 0;
     color: rgba(19, 18, 18, 0.75);
-    margin: 0 0 40px;
+    margin: 0 0 m.fluid(40);
 
     @include m.respond(md) {
       font-size: 18px;
       line-height: 28px;
+      margin-bottom: 32px;
     }
   }
 
   &__pagination {
     display: flex;
-    gap: 12px;
-    margin-top: 32px;
+    gap: m.fluid(12);
+    margin-top: m.fluid(32);
     font-family: v.$font-primary;
-    font-size: 16px;
+    font-size: m.fluid-font(16, 14px);
     font-weight: v.$fw-regular;
     color: rgba(19, 18, 18, 0.35);
   }
@@ -98,25 +102,24 @@ $card-collapsed-w: 180px;
 
   &__gallery {
     display: flex;
-    gap: 16px;
-    height: $card-active-h;
+    gap: m.fluid(16);
+    height: m.fluid(763);
     align-items: stretch;
-
-    @include m.respond(lg) {
-      height: 520px;
-    }
+    min-width: 0;
+    flex-shrink: 1;
 
     @include m.respond(md) {
       flex-direction: column;
       height: auto;
+      width: 100%;
     }
   }
 
   &__card {
     position: relative;
-    flex: 0 0 $card-collapsed-w;
+    flex: 0 0 m.fluid(180, 100px);
     height: 100%;
-    border-radius: 8px;
+    border-radius: m.fluid(8);
     overflow: hidden;
     cursor: pointer;
     opacity: 1;
@@ -125,28 +128,21 @@ $card-collapsed-w: 180px;
       opacity v.$transition-base;
 
     &.is-active {
-      flex: 0 0 $card-active-w;
+      flex: 0 0 m.fluid(564, 280px);
     }
 
     .services__gallery:hover & {
-      flex: 0 0 $card-collapsed-w;
+      flex: 0 0 m.fluid(180, 100px);
     }
 
     .services__gallery:hover &:hover {
-      flex: 0 0 $card-active-w;
-    }
-
-    @include m.respond(lg) {
-      &.is-active,
-      .services__gallery:hover &:hover {
-        flex: 0 0 420px;
-      }
+      flex: 0 0 m.fluid(564, 280px);
     }
 
     @include m.respond(md) {
       flex: none !important;
       width: 100%;
-      height: 320px;
+      height: m.fluid(320, 240px);
     }
   }
 
@@ -163,7 +159,7 @@ $card-collapsed-w: 180px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 32px 24px;
+    padding: m.fluid(32) m.fluid(24);
     background: linear-gradient(
       to top,
       rgba(0, 0, 0, 0.75) 0%,
@@ -174,7 +170,7 @@ $card-collapsed-w: 180px;
 
   &__card-title {
     font-family: v.$font-primary;
-    font-size: 28px;
+    font-size: m.fluid-font(28, 18px);
     font-weight: v.$fw-semibold;
     color: v.$clr-white;
     margin: 0;
@@ -182,14 +178,15 @@ $card-collapsed-w: 180px;
 
     @include m.respond(md) {
       font-size: 22px;
+      white-space: normal;
     }
   }
 
   &__card-desc {
     font-family: v.$font-primary;
-    font-size: 16px;
+    font-size: m.fluid-font(16, 14px);
     font-weight: v.$fw-regular;
-    line-height: 24px;
+    line-height: m.fluid(24);
     color: rgba(255, 255, 255, 0.85);
     margin: 0;
     max-height: 0;
@@ -202,18 +199,18 @@ $card-collapsed-w: 180px;
 
     .services__card.is-active &,
     .services__card:hover & {
-      max-height: 120px;
+      max-height: m.fluid(120);
       opacity: 1;
-      margin-top: 12px;
+      margin-top: m.fluid(12);
     }
   }
 
   &__card-arrow {
     position: absolute;
-    bottom: 32px;
-    right: 24px;
-    width: 44px;
-    height: 44px;
+    bottom: m.fluid(32);
+    right: m.fluid(24);
+    width: m.fluid(44);
+    height: m.fluid(44);
     border-radius: 50%;
     border: none;
     background: v.$clr-white;
@@ -223,8 +220,8 @@ $card-collapsed-w: 180px;
     transition: opacity v.$transition-base, transform v.$transition-base;
 
     svg {
-      width: 20px;
-      height: 20px;
+      width: m.fluid(20);
+      height: m.fluid(20);
       stroke: v.$clr-dark;
       stroke-width: 2;
       fill: none;

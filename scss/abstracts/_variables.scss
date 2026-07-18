@@ -33,7 +33,12 @@ $bp-sm: 576px;
 $bp-md: 768px;
 $bp-lg: 992px;
 $bp-xl: 1200px;
+$bp-design: 1920px;
+
+// --- Design baseline (Figma artboard) ---
+$design-w: 1920;
+$design-section-h: 1043;
 
 // --- Layout ---
-$container-max: 1280px;
+$container-max: 1580px;
 $container-pad: 90%;

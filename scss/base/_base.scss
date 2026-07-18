@@ -4,6 +4,7 @@
 // ==========================================================================
 
 @use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
 
 body {
   background-color: v.$clr-dark;
@@ -12,6 +13,6 @@ body {
 }
 
 .container {
-  width: min(#{v.$container-max}, #{v.$container-pad});
+  width: min(#{v.$container-max}, calc(100vw - #{m.fluid(340)}));
   margin-inline: auto;
 }

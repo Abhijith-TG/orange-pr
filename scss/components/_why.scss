@@ -1,39 +1,30 @@
 @use '../abstracts/variables' as v;
 @use '../abstracts/mixins' as m;
 
-$panel-max-w: 1580px;
-$panel-h: 540px;
-$card-w: 442px;
-$card-h: 562px;
-$card-img-size: 147px;
-
 .why {
   background-color: v.$clr-white;
-  padding: 100px 0 280px;
+  padding: m.fluid(100) 0 m.fluid(280);
   overflow: hidden;
+  min-height: m.fluid(v.$design-section-h);
 
   @include m.respond(md) {
     padding: 80px 0 120px;
+    min-height: auto;
   }
 
   &__panel {
     position: relative;
-    width: min($panel-max-w, 94vw);
-    height: $panel-h;
+    width: min(#{v.$container-max}, calc(100vw - #{m.fluid(340)}));
+    height: m.fluid(540);
     margin-inline: auto;
     background-color: #EFEFEF;
-    border-radius: 20px 20px 0 0;
-
-    @include m.respond(lg) {
-      height: auto;
-      min-height: 400px;
-      padding-bottom: 48px;
-    }
+    border-radius: m.fluid(20) m.fluid(20) 0 0;
 
     @include m.respond(md) {
       width: 100%;
-      border-radius: 16px 16px 0 0;
+      height: auto;
       min-height: 0;
+      border-radius: 16px 16px 0 0;
       padding-bottom: 0;
     }
   }
@@ -41,19 +32,14 @@ $card-img-size: 147px;
   &__title {
     font-family: v.$font-primary;
     font-weight: v.$fw-semibold;
-    font-size: 64px;
+    font-size: m.fluid-font(64, 28px);
     line-height: 100%;
     letter-spacing: 0;
     text-transform: uppercase;
     text-align: center;
     color: v.$clr-dark;
     margin: 0;
-    padding: 72px 24px 0;
-
-    @include m.respond(lg) {
-      font-size: 48px;
-      padding-top: 56px;
-    }
+    padding: m.fluid(72) m.fluid(24) 0;
 
     @include m.respond(md) {
       font-size: 32px;
@@ -63,50 +49,45 @@ $card-img-size: 147px;
 
   &__cards {
     position: absolute;
-    top: 233px;
-    left: 63px;
-    right: 63px;
+    top: m.fluid(233);
+    left: m.fluid(63);
+    right: m.fluid(63);
     display: flex;
     justify-content: center;
-    gap: 63px;
+    gap: m.fluid(63);
+    align-items: flex-start;
 
-    @include m.respond(lg) {
+    @include m.respond(md) {
       position: static;
       flex-direction: column;
       align-items: center;
-      gap: 32px;
-      padding: 48px 24px 0;
+      gap: 24px;
+      padding: 32px 20px 0;
       top: auto;
       left: auto;
       right: auto;
-    }
-
-    @include m.respond(md) {
-      padding: 32px 20px 0;
-      gap: 24px;
     }
   }
 
   &__card {
     position: relative;
-    width: $card-w;
-    height: $card-h;
+    width: m.fluid(442, 280px);
+    height: m.fluid(562);
     flex-shrink: 0;
-    padding: 32px;
-    border-radius: 8px;
+    min-width: 0;
+    padding: m.fluid(32);
+    border-radius: m.fluid(8);
     border: 1px solid transparent;
     display: flex;
     flex-direction: column;
     opacity: 1;
 
-    @include m.respond(lg) {
-      width: min($card-w, 100%);
-      height: auto;
-      min-height: 480px;
-    }
-
     @include m.respond(md) {
+      width: 100%;
+      max-width: 442px;
+      height: auto;
       min-height: 420px;
+      flex-shrink: 0;
       padding: 24px;
     }
 
@@ -116,9 +97,9 @@ $card-img-size: 147px;
 
     &--2 {
       background-color: #FD9073;
-      margin-top: 48px;
+      margin-top: m.fluid(48);
 
-      @include m.respond(lg) {
+      @include m.respond(md) {
         margin-top: 0;
       }
     }
@@ -132,8 +113,8 @@ $card-img-size: 147px;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    gap: 16px;
-    margin-bottom: 40px;
+    gap: m.fluid(16);
+    margin-bottom: m.fluid(40);
 
     @include m.respond(md) {
       margin-bottom: 28px;
@@ -143,16 +124,12 @@ $card-img-size: 147px;
   &__card-num {
     font-family: v.$font-primary;
     font-weight: v.$fw-semibold;
-    font-size: 96px;
+    font-size: m.fluid-font(96, 48px);
     line-height: 100%;
     letter-spacing: 0;
     text-transform: uppercase;
     color: v.$clr-white;
     margin: 0;
-
-    @include m.respond(lg) {
-      font-size: 72px;
-    }
 
     @include m.respond(md) {
       font-size: 56px;
@@ -160,9 +137,9 @@ $card-img-size: 147px;
   }
 
   &__card-img {
-    width: $card-img-size;
-    height: $card-img-size;
-    border-radius: 8px;
+    width: m.fluid(147);
+    height: m.fluid(147);
+    border-radius: m.fluid(8);
     object-fit: cover;
     flex-shrink: 0;
 
@@ -175,13 +152,13 @@ $card-img-size: 147px;
   &__card-title {
     font-family: v.$font-primary;
     font-weight: v.$fw-semibold;
-    font-size: 24px;
+    font-size: m.fluid-font(24, 18px);
     line-height: 100%;
     letter-spacing: 0;
     text-transform: uppercase;
     color: v.$clr-white;
     margin: 0 0 auto;
-    padding-bottom: 32px;
+    padding-bottom: m.fluid(32);
 
     @include m.respond(md) {
       font-size: 20px;
@@ -192,8 +169,8 @@ $card-img-size: 147px;
   &__card-text {
     font-family: v.$font-primary;
     font-weight: v.$fw-regular;
-    font-size: 24px;
-    line-height: 36px;
+    font-size: m.fluid-font(24, 16px);
+    line-height: m.fluid(36);
     letter-spacing: 0;
     color: v.$clr-white;
     margin: 0;

@@ -11,6 +11,15 @@
 }
 
 // All other sections use standard spacing
-section:not(#hero):not(#why) {
+section:not(#hero):not(#why):not(#about):not(#services) {
   padding: 100px 0;
+}
+
+#about,
+#services {
+  padding: clamp(60px, calc(100 / 1920 * 100vw), 100px) 0;
+}
+
+#why {
+  padding: 0;
 }

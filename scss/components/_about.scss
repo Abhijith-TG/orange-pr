@@ -6,18 +6,19 @@
   background-color: v.$clr-white;
   color: v.$clr-dark;
   overflow: hidden;
-  padding: 120px 0;
+  padding: m.fluid(120) 0;
+  min-height: m.fluid(v.$design-section-h);
 
   @include m.respond(md) {
     padding: 80px 0;
+    min-height: auto;
   }
 
-  // --- Background Watermark ---
   &__watermark {
     position: absolute;
     top: 5%;
     right: -5%;
-    font-size: clamp(100px, 16vw, 260px);
+    font-size: clamp(100px, calc(260 / #{v.$design-w} * 100vw), 260px);
     font-weight: 900;
     color: rgba(19, 18, 18, 0.015);
     line-height: 1;
@@ -29,26 +30,17 @@
     text-transform: uppercase;
   }
 
-
-
-
   .container {
     position: relative;
     z-index: 2;
   }
 
-  // --- Layout Grid ---
   &__grid {
     display: grid;
-    grid-template-columns: 379px 1fr;
-    column-gap: 104px; // Exact 104px Figma distance between them
+    grid-template-columns: m.fluid(379) 1fr;
+    column-gap: m.fluid(104);
     align-items: start;
-    margin-bottom: 90px;
-
-    @include m.respond(lg) {
-      grid-template-columns: 300px 1fr;
-      column-gap: 50px;
-    }
+    margin-bottom: m.fluid(90);
 
     @include m.respond(md) {
       grid-template-columns: 1fr;
@@ -58,37 +50,32 @@
     }
   }
 
-  // --- Left Column (Heading + Image) ---
   &__col-left {
     display: block;
   }
 
   &__title {
     font-family: v.$font-primary;
-    font-size: 64px;
+    font-size: m.fluid-font(64, 32px);
     font-weight: 600;
     line-height: 1.15;
     color: #1A1A1A;
     letter-spacing: -1px;
-    margin: 0 0 52px 0; // Margin below title to space it from the grid
-    max-width: 450px;
-
-    @include m.respond(lg) {
-      font-size: 48px;
-      margin-bottom: 40px;
-    }
+    margin: 0 0 m.fluid(52) 0;
+    max-width: m.fluid(450);
 
     @include m.respond(md) {
       font-size: 36px;
       margin-bottom: 30px;
+      max-width: none;
     }
   }
 
   &__image-wrapper {
     position: relative;
     width: 100%;
-    max-width: 379px;
-    height: 468px;
+    max-width: m.fluid(379);
+    height: m.fluid(468);
     border-radius: 4px;
     overflow: hidden;
 
@@ -110,7 +97,6 @@
     z-index: 1;
   }
 
-  // Shapes overlay in front of the portrait photo
   .about__pattern {
     position: absolute;
     top: 0;
@@ -129,17 +115,12 @@
     }
   }
 
-  // --- Right Column (Paragraph + Button) ---
   &__col-right {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 45px; // Exactly 45px gap between text and button
+    gap: m.fluid(45);
     padding-top: 0;
-
-    @include m.respond(lg) {
-      gap: 36px;
-    }
 
     @include m.respond(md) {
       gap: 30px;
@@ -148,32 +129,25 @@
 
   &__text {
     font-family: v.$font-primary;
-    font-size: 24px;
-    line-height: 36px;
+    font-size: m.fluid-font(24, 16px);
+    line-height: m.fluid(36);
     font-weight: 400;
     color: rgba(19, 18, 18, 0.75);
     margin: 0;
     text-align: left;
 
-    @include m.respond(lg) {
-      font-size: 20px;
-      line-height: 30px;
-    }
-
     @include m.respond(md) {
       font-size: 16px;
       line-height: 26px;
-      text-align: left;
     }
   }
 
-  // --- Stats Bar ---
   &__stats {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     border-top: 1px solid rgba(19, 18, 18, 0.08);
     border-bottom: 1px solid rgba(19, 18, 18, 0.08);
-    padding: 40px 0;
+    padding: m.fluid(40) 0;
 
     @include m.respond(lg) {
       grid-template-columns: repeat(2, 1fr);
@@ -188,12 +162,11 @@
   }
 }
 
-// --- Stat Item ---
 .stat-item {
   display: flex;
   align-items: center;
-  gap: 20px;
-  padding: 0 40px;
+  gap: m.fluid(20);
+  padding: 0 m.fluid(40);
 
   &:not(:last-child) {
     border-right: 1px solid rgba(19, 18, 18, 0.08);
@@ -201,12 +174,11 @@
 
   @include m.respond(lg) {
     padding: 0 20px;
-    
+
     &:nth-child(even) {
       border-right: none;
     }
-    
-    // Add border bottom to first two rows in tablet
+
     &:nth-child(1),
     &:nth-child(2) {
       border-bottom: 1px solid rgba(19, 18, 18, 0.08);
@@ -218,7 +190,7 @@
     padding: 0;
     border-right: none !important;
     border-bottom: none !important;
-    
+
     &:not(:last-child) {
       border-bottom: 1px solid rgba(19, 18, 18, 0.04) !important;
       padding-bottom: 20px;
@@ -226,9 +198,9 @@
   }
 
   &__icon {
-    width: 74px;
-    height: 74px;
-    border-radius: 10px;
+    width: m.fluid(74);
+    height: m.fluid(74);
+    border-radius: m.fluid(10);
     background-color: #DEE4E6;
     display: flex;
     align-items: center;
@@ -236,8 +208,8 @@
     flex-shrink: 0;
 
     img {
-      width: 48px;
-      height: 48px;
+      width: m.fluid(48);
+      height: m.fluid(48);
       object-fit: contain;
     }
   }
@@ -250,16 +222,12 @@
 
   &__label {
     font-family: v.$font-primary;
-    font-size: 24px;
+    font-size: m.fluid-font(24, 16px);
     font-weight: 400;
     color: #466378;
-    text-transform: none; // Match figma casing
+    text-transform: none;
     letter-spacing: 0;
     line-height: 1;
-
-    @include m.respond(lg) {
-      font-size: 18px;
-    }
 
     @include m.respond(md) {
       font-size: 16px;
@@ -268,15 +236,11 @@
 
   &__number {
     font-family: v.$font-primary;
-    font-size: 48px;
+    font-size: m.fluid-font(48, 28px);
     font-weight: 500;
     color: v.$clr-dark;
     line-height: 1;
     text-transform: uppercase;
-
-    @include m.respond(lg) {
-      font-size: 38px;
-    }
 
     @include m.respond(md) {
       font-size: 32px;

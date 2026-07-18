@@ -1,5 +1,19 @@
 @use 'variables' as v;
 
+// Scale any Figma px value proportionally from the 1920px artboard.
+// Below 1920px everything shrinks; above 1920px it caps at the design size.
+@function fluid($px, $min: null) {
+  $scaled: calc(#{$px} / #{v.$design-w} * 100vw);
+  $floor: if($min, $min, #{$px * 0.5}px);
+
+  @return clamp(#{$floor}, #{$scaled}, #{$px}px);
+}
+
+// Typography helper — keeps text readable on small screens
+@function fluid-font($px, $min-px) {
+  @return fluid($px, $min-px);
+}
+
 @mixin respond($bp) {
   @if $bp ==sm {
     @media (max-width: #{v.$bp-sm}) {
@@ -21,6 +35,12 @@
 
   @if $bp ==xl {
     @media (max-width: #{v.$bp-xl}) {
+      @content;
+    }
+  }
+
+  @if $bp ==design {
+    @media (max-width: #{v.$bp-design}) {
       @content;
     }
   }
