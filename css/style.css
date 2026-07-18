@@ -128,12 +128,12 @@ body {
 
 .video-card {
   position: relative;
-  width: 385px;
-  height: 293px;
+  width: clamp(192.5px, calc(385 / 1920 * 100vw), 385px);
+  height: clamp(146.5px, calc(293 / 1920 * 100vw), 293px);
   flex-shrink: 0;
-  padding: 20px;
+  padding: clamp(10px, calc(20 / 1920 * 100vw), 20px);
   background: rgba(255, 255, 255, 0.31);
-  border-radius: 10px;
+  border-radius: clamp(5px, calc(10 / 1920 * 100vw), 10px);
   cursor: pointer;
   transition: transform 0.3s ease, background 0.3s ease;
 }
@@ -178,8 +178,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100px;
-  height: 100px;
+  width: clamp(50px, calc(100 / 1920 * 100vw), 100px);
+  height: clamp(50px, calc(100 / 1920 * 100vw), 100px);
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.59);
   border: none;
@@ -188,11 +188,11 @@ body {
   transition: background 0.3s ease;
 }
 .video-card__play .play-circle svg {
-  width: 48px;
-  height: 48px;
+  width: clamp(24px, calc(48 / 1920 * 100vw), 48px);
+  height: clamp(24px, calc(48 / 1920 * 100vw), 48px);
   color: #ffffff;
   fill: currentColor;
-  margin-left: 6px;
+  margin-left: clamp(3px, calc(6 / 1920 * 100vw), 6px);
   transition: color 0.3s ease;
 }
 @media (max-width: 768px) {
@@ -210,9 +210,14 @@ body {
 .hero {
   position: relative;
   width: 100%;
-  height: 100vh;
-  min-height: 680px;
+  height: clamp(521.5px, calc(1043 / 1920 * 100vw), 1043px);
   overflow: hidden;
+}
+@media (max-width: 768px) {
+  .hero {
+    height: 100vh;
+    min-height: 680px;
+  }
 }
 
 .slide {
@@ -254,8 +259,8 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding-top: 130px;
-  padding-bottom: 52px;
+  padding-top: clamp(65px, calc(130 / 1920 * 100vw), 130px);
+  padding-bottom: clamp(26px, calc(52 / 1920 * 100vw), 52px);
 }
 @media (max-width: 768px) {
   .slide__inner {
@@ -269,8 +274,8 @@ body {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  gap: 32px;
-  margin-bottom: 28px;
+  gap: clamp(16px, calc(32 / 1920 * 100vw), 32px);
+  margin-bottom: clamp(14px, calc(28 / 1920 * 100vw), 28px);
 }
 @media (max-width: 992px) {
   .slide__body {
@@ -286,14 +291,14 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  font-size: 128px;
+  font-size: clamp(64px, calc(128 / 1920 * 100vw), 128px);
   line-height: 0.88;
   letter-spacing: -2px;
   color: #ffffff;
-  margin-bottom: 22px;
+  margin-bottom: clamp(11px, calc(22 / 1920 * 100vw), 22px);
   text-transform: uppercase;
   opacity: 0;
-  transform: translateY(28px);
+  transform: translateY(clamp(14px, calc(28 / 1920 * 100vw), 28px));
   transition: opacity 0.7s ease 0.25s, transform 0.7s ease 0.25s;
 }
 @media (max-width: 992px) {
@@ -315,7 +320,7 @@ body {
 }
 .slide__headline .fw-light {
   font-weight: 300;
-  padding: 16px 0;
+  padding: clamp(8px, calc(16 / 1920 * 100vw), 16px) 0;
 }
 .slide__headline .fw-bold {
   font-weight: 600;
@@ -330,18 +335,18 @@ body {
   font-weight: 600;
 }
 .slide__desc {
-  max-width: 320px;
-  font-size: 12.5px;
+  max-width: clamp(160px, calc(320 / 1920 * 100vw), 320px);
+  font-size: clamp(12px, calc(12.5 / 1920 * 100vw), 12.5px);
   line-height: 1.8;
   color: rgba(255, 255, 255, 0.6);
   opacity: 0;
-  transform: translateY(18px);
+  transform: translateY(clamp(9px, calc(18 / 1920 * 100vw), 18px));
   transition: opacity 0.7s ease 0.45s, transform 0.7s ease 0.45s;
 }
 .slide__media {
   flex-shrink: 0;
   opacity: 0;
-  transform: translateY(18px);
+  transform: translateY(clamp(9px, calc(18 / 1920 * 100vw), 18px));
   transition: opacity 0.7s ease 0.4s, transform 0.7s ease 0.4s;
   position: relative;
   left: calc(50vw - 50% - 2vw);
@@ -356,8 +361,8 @@ body {
   margin-left: calc(-50vw + 50%);
   height: 1px;
   background: #ffffff;
-  margin-bottom: 46px;
-  margin-top: 46px;
+  margin-bottom: clamp(23px, calc(46 / 1920 * 100vw), 46px);
+  margin-top: clamp(23px, calc(46 / 1920 * 100vw), 46px);
   opacity: 0;
   transition: opacity 0.5s ease 0.55s;
 }
@@ -369,7 +374,7 @@ body {
 }
 .slide__bottom {
   opacity: 0;
-  transform: translateY(10px);
+  transform: translateY(clamp(5px, calc(10 / 1920 * 100vw), 10px));
   transition: opacity 0.6s ease 0.65s, transform 0.6s ease 0.65s;
 }
 .slide.is-active {
@@ -392,15 +397,15 @@ body {
 
 .slider-controls {
   position: absolute;
-  bottom: 52px;
+  bottom: clamp(26px, calc(52 / 1920 * 100vw), 52px);
   right: 2vw;
   z-index: 20;
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
-  width: 296px;
-  height: 69px;
-  padding: 0 24px;
+  width: clamp(148px, calc(296 / 1920 * 100vw), 296px);
+  height: clamp(34.5px, calc(69 / 1920 * 100vw), 69px);
+  padding: 0 clamp(12px, calc(24 / 1920 * 100vw), 24px);
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 100px;
   background: transparent;
@@ -421,8 +426,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: clamp(16px, calc(32 / 1920 * 100vw), 32px);
+  height: clamp(16px, calc(32 / 1920 * 100vw), 32px);
   background: transparent;
   border: none;
   cursor: pointer;
@@ -447,12 +452,12 @@ body {
 .slider-dots {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: clamp(8px, calc(16 / 1920 * 100vw), 16px);
 }
 
 .slider-dot {
-  width: 22px;
-  height: 22px;
+  width: clamp(11px, calc(22 / 1920 * 100vw), 22px);
+  height: clamp(11px, calc(22 / 1920 * 100vw), 22px);
   border-radius: 50%;
   border: none;
   background: #ffffff;
@@ -461,7 +466,7 @@ body {
   flex-shrink: 0;
   transition: background 0.3s ease, outline-color 0.3s ease;
   outline: 1px solid transparent;
-  outline-offset: 8px;
+  outline-offset: clamp(4px, calc(8 / 1920 * 100vw), 8px);
 }
 .slider-dot.is-active {
   outline-color: #ffffff;
@@ -998,6 +1003,14 @@ body {
   display: flex;
   flex-direction: column;
   opacity: 1;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  z-index: 1;
+}
+.why__card:hover {
+  transform: scale(1.04);
+  z-index: 2;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
 }
 @media (max-width: 768px) {
   .why__card {

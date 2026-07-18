@@ -10,9 +10,13 @@
 .hero {
   position: relative;
   width: 100%;
-  height: 100vh;
-  min-height: 680px;
+  height: m.fluid(v.$design-section-h);
   overflow: hidden;
+
+  @include m.respond(md) {
+    height: 100vh;
+    min-height: 680px;
+  }
 }
 
 // ---- Individual slide ----
@@ -52,9 +56,9 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding-top: 130px; // Always protect the header space!
+    padding-top: m.fluid(130); // Always protect the header space!
     // Space for: explore button + divider + body text
-    padding-bottom: 52px;
+    padding-bottom: m.fluid(52);
 
     @include m.respond(md) {
       padding-bottom: 110px; // Extra space at bottom so Explore button doesn't overlap controls
@@ -71,8 +75,8 @@
     display: flex;
     align-items: flex-end; // bottom-align text block with card
     justify-content: space-between;
-    gap: 32px;
-    margin-bottom: 28px;
+    gap: m.fluid(32);
+    margin-bottom: m.fluid(28);
 
     @include m.respond(lg) {
       flex-direction: column;
@@ -91,15 +95,15 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    font-size: 128px;
+    font-size: m.fluid-font(128, 64px);
     line-height: 0.88; // Tighter vertical spacing to match design
     letter-spacing: -2px;
     color: v.$clr-white;
-    margin-bottom: 22px;
+    margin-bottom: m.fluid(22);
     text-transform: uppercase;
     // entry animation
     opacity: 0;
-    transform: translateY(28px);
+    transform: translateY(m.fluid(28));
     transition: opacity 0.7s ease 0.25s, transform 0.7s ease 0.25s;
 
     // Responsive scaling to prevent overlap on smaller/shorter screens
@@ -120,7 +124,7 @@
     // Line 1 — weight 300 (light)
     .fw-light {
       font-weight: 300;
-      padding: 16px 0; // More padding top and bottom than others
+      padding: m.fluid(16) 0; // More padding top and bottom than others
     }
 
     // Lines 2 & 3 — weight 600 (semibold), matching Figma spec
@@ -140,12 +144,12 @@
   }
 
   &__desc {
-    max-width: 320px;
-    font-size: 12.5px;
+    max-width: m.fluid(320);
+    font-size: m.fluid-font(12.5, 12px);
     line-height: 1.8;
     color: v.$clr-white-60;
     opacity: 0;
-    transform: translateY(18px);
+    transform: translateY(m.fluid(18));
     transition: opacity 0.7s ease 0.45s, transform 0.7s ease 0.45s;
   }
 
@@ -153,7 +157,7 @@
   &__media {
     flex-shrink: 0;
     opacity: 0;
-    transform: translateY(18px);
+    transform: translateY(m.fluid(18));
     transition: opacity 0.7s ease 0.4s, transform 0.7s ease 0.4s;
     
     // Shift the video card to perfectly align with the right end of the nav!
@@ -171,8 +175,8 @@
     margin-left: calc(-50vw + 50%);
     height: 1px;
     background: v.$clr-white;
-    margin-bottom: 46px;
-    margin-top: 46px;
+    margin-bottom: m.fluid(46);
+    margin-top: m.fluid(46);
     opacity: 0;
     transition: opacity 0.5s ease 0.55s;
 
@@ -185,7 +189,7 @@
   // ── Bottom row (EXPLORE button) ────────────────────────────────────────
   &__bottom {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(m.fluid(10));
     transition: opacity 0.6s ease 0.65s, transform 0.6s ease 0.65s;
   }
 
@@ -219,15 +223,15 @@
 
 .slider-controls {
   position: absolute;
-  bottom: 52px;
+  bottom: m.fluid(52);
   right: 2vw; // Aligns exactly with the video card and nav end (96% header width = 2vw margin)
   z-index: 20;
   display: inline-flex;
   align-items: center;
   justify-content: space-between; // Space out arrows and dots to fill width
-  width: 296px;
-  height: 69px;
-  padding: 0 24px;
+  width: m.fluid(296);
+  height: m.fluid(69);
+  padding: 0 m.fluid(24);
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 100px;
   background: transparent;
@@ -246,8 +250,8 @@
 // Arrow buttons
 .slider-arrow {
   @include m.flex-center;
-  width: 32px;
-  height: 32px;
+  width: m.fluid(32);
+  height: m.fluid(32);
   background: transparent;
   border: none;
   cursor: pointer;
@@ -278,13 +282,13 @@
 .slider-dots {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: m.fluid(16);
 }
 
 // Individual dot
 .slider-dot {
-  width: 22px;
-  height: 22px;
+  width: m.fluid(22);
+  height: m.fluid(22);
   border-radius: 50%;
   border: none;
   background: v.$clr-white;
@@ -296,7 +300,7 @@
   // Outer circle is 40px. Dot is 22px. 1px border.
   // 22 + (8 * 2) + (1 * 2) = 40px total diameter
   outline: 1px solid transparent;
-  outline-offset: 8px;
+  outline-offset: m.fluid(8);
 
   &.is-active {
     outline-color: v.$clr-white;

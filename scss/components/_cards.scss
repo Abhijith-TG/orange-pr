@@ -9,14 +9,14 @@
 .video-card {
   position: relative;
   // --- Exact Figma dimensions ---
-  width: 385px;
-  height: 293px;
+  width: m.fluid(385);
+  height: m.fluid(293);
   flex-shrink: 0;
 
   // --- 31% white background with padding creates the frosted-frame look ---
-  padding: 20px;
+  padding: m.fluid(20);
   background: rgba(255, 255, 255, 0.31);
-  border-radius: 10px;
+  border-radius: m.fluid(10);
 
   cursor: pointer;
   transition: transform v.$transition-base, background v.$transition-base;
@@ -62,8 +62,8 @@
 
     .play-circle {
       @include m.flex-center;
-      width: 100px;
-      height: 100px;
+      width: m.fluid(100);
+      height: m.fluid(100);
       border-radius: 50%;
       background: rgba(255, 255, 255, 0.59);
       border: none;
@@ -72,11 +72,11 @@
       transition: background v.$transition-base;
 
       svg {
-        width: 48px;
-        height: 48px;
+        width: m.fluid(48);
+        height: m.fluid(48);
         color: v.$clr-white;
         fill: currentColor;
-        margin-left: 6px; // Optical centering for a 48px play icon
+        margin-left: m.fluid(6); // Optical centering for a 48px play icon
         transition: color v.$transition-base;
       }
 
