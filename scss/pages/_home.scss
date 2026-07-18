@@ -11,6 +11,6 @@
 }
 
 // All other sections use standard spacing
-section:not(#hero) {
+section:not(#hero):not(#why) {
   padding: 100px 0;
 }
