@@ -344,8 +344,8 @@
     position: absolute;
     bottom: m.fluid(32);
     right: m.fluid(24);
-    width: m.fluid(44);
-    height: m.fluid(44);
+    width: m.fluid(60);
+    height: m.fluid(60);
     border-radius: 50%;
     border: none;
     background: v.$clr-white;
@@ -353,13 +353,27 @@
     opacity: 0;
     transform: scale(0.8);
     transition: opacity v.$transition-base, transform v.$transition-base;
+    z-index: 2; // ensure it is above the glass blur (::before and ::after)
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    svg {
-      width: m.fluid(20);
-      height: m.fluid(20);
-      stroke: v.$clr-dark;
-      stroke-width: 2;
-      fill: none;
+    &-icon {
+      width: m.fluid(32);
+      height: m.fluid(32);
+      background-color: #466378; // The exact color requested
+      
+      // Use the arrow as a mask so we can color it arbitrarily
+      mask-image: url('../assets/icons/arrow.png');
+      mask-size: contain;
+      mask-position: center;
+      mask-repeat: no-repeat;
+      -webkit-mask-image: url('../assets/icons/arrow.png');
+      -webkit-mask-size: contain;
+      -webkit-mask-position: center;
+      -webkit-mask-repeat: no-repeat;
+
+      transform: scaleX(-1); // Flip the back arrow to point right
     }
 
     .services__card.is-active &,
