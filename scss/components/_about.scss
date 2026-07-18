@@ -40,7 +40,7 @@
     // Left column = image width only; shapes visually overflow outside via negative margin
     grid-template-columns: m.fluid(379) 1fr;
     column-gap: m.fluid(104);
-    align-items: start;
+    align-items: stretch; // stretch columns to match height on desktop
     margin-bottom: m.fluid(90);
 
     @include m.respond(md) {
@@ -48,6 +48,7 @@
       column-gap: 0;
       row-gap: 40px;
       margin-bottom: 60px;
+      align-items: start; // reset on mobile/tablet
     }
   }
 
@@ -155,22 +156,32 @@
     }
   }
 
+  &__action {
+    margin-top: auto; // align readmore to the bottom of the column (end of the image)
+    
+    @include m.respond(md) {
+      margin-top: 0;
+    }
+  }
+
   &__stats {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     border-top: 1px solid rgba(19, 18, 18, 0.08);
     border-bottom: 1px solid rgba(19, 18, 18, 0.08);
-    padding: m.fluid(40) 0;
+    
+    // Stretch top and bottom borders all the way to the viewport edges
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    padding-left: calc(50vw - 50%);
+    padding-right: calc(50vw - 50%);
 
     @include m.respond(lg) {
       grid-template-columns: repeat(2, 1fr);
-      gap: 30px 0;
     }
 
     @include m.respond(sm) {
       grid-template-columns: 1fr;
-      gap: 24px;
-      padding: 30px 0;
     }
   }
 }
@@ -179,14 +190,14 @@
   display: flex;
   align-items: center;
   gap: m.fluid(20);
-  padding: 0 m.fluid(40);
+  padding: m.fluid(40); // all padding is internal, making vertical dividers touch top/bottom lines
 
   &:not(:last-child) {
     border-right: 1px solid rgba(19, 18, 18, 0.08);
   }
 
   @include m.respond(lg) {
-    padding: 0 20px;
+    padding: 30px 20px;
 
     &:nth-child(even) {
       border-right: none;
@@ -195,18 +206,16 @@
     &:nth-child(1),
     &:nth-child(2) {
       border-bottom: 1px solid rgba(19, 18, 18, 0.08);
-      padding-bottom: 30px;
     }
   }
 
   @include m.respond(sm) {
-    padding: 0;
+    padding: 20px 0;
     border-right: none !important;
     border-bottom: none !important;
 
     &:not(:last-child) {
       border-bottom: 1px solid rgba(19, 18, 18, 0.04) !important;
-      padding-bottom: 20px;
     }
   }
 
