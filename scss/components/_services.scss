@@ -15,22 +15,22 @@
     display: grid;
     grid-template-columns: 1fr auto;
     gap: m.fluid(60);
-    align-items: stretch; // stretch column heights to match the gallery cards
+    align-items: stretch;
 
     @include m.respond(md) {
       grid-template-columns: 1fr;
       gap: 48px;
-      align-items: start; // reset on tablet/mobile
+      align-items: start;
     }
   }
 
   &__content {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end; // push everything (including title) to the bottom
+    justify-content: flex-end;
     max-width: m.fluid(520);
     min-width: 0;
-    padding-right: m.fluid(50); // spacing from gallery
+    padding-right: m.fluid(50);
     flex: 1;
 
     @include m.respond(md) {
@@ -45,8 +45,8 @@
     line-height: 100%;
     letter-spacing: 2;
     color: #1A1A1A;
-    margin: 0 0 m.fluid(30); // exactly 30px gap to tagline
-    white-space: nowrap; // force WHAT WE DO onto a single line
+    margin: 0 0 m.fluid(30);
+    white-space: nowrap;
 
     @include m.respond(md) {
       font-size: 36px;
@@ -69,7 +69,7 @@
     line-height: 100%;
     letter-spacing: 0;
     color: #466378;
-    margin: 0 0 m.fluid(48); // gap to description
+    margin: 0 0 m.fluid(48);
 
     @include m.respond(md) {
       font-size: 28px;
@@ -82,8 +82,8 @@
     font-size: m.fluid-font(24, 16px);
     line-height: m.fluid(36);
     letter-spacing: 0;
-    color: v.$clr-dark; // black
-    margin: 0 0 m.fluid(60); // gap to readmore button
+    color: v.$clr-dark;
+    margin: 0 0 m.fluid(60);
 
     @include m.respond(md) {
       font-size: 18px;
@@ -95,10 +95,10 @@
   &__action-row {
     display: flex;
     flex-direction: row;
-    align-items: flex-end; // align pagination to the bottom of the row
-    justify-content: space-between; // readmore on left, pagination on right
+    align-items: flex-end;
+    justify-content: space-between;
     width: 100%;
-    margin-top: 0; // margin handled by desc
+    margin-top: 0;
 
     @include m.respond(md) {
       flex-direction: column;
@@ -111,7 +111,7 @@
   &__pagination {
     display: flex;
     gap: m.fluid(12);
-    margin-top: 0; // removed top margin since it is aligned within flex row
+    margin-top: 0;
     font-family: v.$font-primary;
     font-size: m.fluid-font(16, 14px);
     font-weight: v.$fw-regular;
@@ -132,7 +132,7 @@
     display: flex;
     gap: m.fluid(16);
     height: m.fluid(763);
-    align-items: flex-start; // align cards to the top
+    align-items: flex-start;
     min-width: 0;
     flex-shrink: 1;
 
@@ -144,7 +144,6 @@
       height: 400px;
       align-items: stretch;
 
-      /* Hide scrollbar for a clean swipe UI */
       &::-webkit-scrollbar {
         display: none;
       }
@@ -160,7 +159,6 @@
     overflow: hidden;
     cursor: pointer;
     opacity: 1;
-    // Default size for distance 2
     flex: 0 0 m.fluid(230, 100px);
     height: m.fluid(589, 200px);
     transition:
@@ -168,50 +166,43 @@
       height v.$transition-slow,
       opacity v.$transition-base;
 
-    // Distance 1 (after active)
     .services__card.is-active+& {
       flex: 0 0 m.fluid(300, 150px);
       height: m.fluid(685, 240px);
     }
 
-    // Distance 1 (before active)
     &:has(+ .services__card.is-active) {
       flex: 0 0 m.fluid(300, 150px);
       height: m.fluid(685, 240px);
     }
 
-    // Active card
     &.is-active {
       flex: 0 0 m.fluid(520, 280px);
       height: m.fluid(763, 320px);
     }
 
-    // Hover state resets
     .services__gallery:hover & {
       flex: 0 0 m.fluid(230, 100px);
       height: m.fluid(589, 200px);
     }
 
-    // Distance 1 after hovered card
     .services__gallery:hover &:hover+.services__card {
       flex: 0 0 m.fluid(300, 150px);
       height: m.fluid(685, 240px);
     }
 
-    // Distance 1 before hovered card
     .services__gallery:hover &:has(+ .services__card:hover) {
       flex: 0 0 m.fluid(300, 150px);
       height: m.fluid(685, 240px);
     }
 
-    // Hovered card is active
     .services__gallery:hover &:hover {
       flex: 0 0 m.fluid(520, 280px);
       height: m.fluid(763, 320px);
     }
 
     @include m.respond(md) {
-      flex: 0 0 85% !important; // Cards take up 85% width so the next one peeks in
+      flex: 0 0 85% !important;
       height: auto !important;
       scroll-snap-align: start;
     }
@@ -232,16 +223,14 @@
     flex-direction: column;
     justify-content: flex-end;
     padding: m.fluid(32) m.fluid(24);
-    background: transparent; // Remove black gradient so we blur the actual image!
+    background: transparent;
 
-    // Glassmorphic panel at the bottom
     &::before {
       content: "";
       position: absolute;
       inset: 0;
       z-index: 1;
 
-      /* Dark gradient for readability */
       background: linear-gradient(to top,
           rgba(0, 0, 0, .35),
           rgba(0, 0, 0, .15),
@@ -263,7 +252,6 @@
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
 
-      /* Fade only the blur */
       mask-image: linear-gradient(to top,
           black 60%,
           transparent 100%);
@@ -324,7 +312,7 @@
     max-height: 0;
     opacity: 0;
     overflow: hidden;
-    padding-right: m.fluid(60); // prevent text from touching the arrow icon
+    padding-right: m.fluid(60);
     position: relative;
     z-index: 1;
     transition:
@@ -353,7 +341,7 @@
     opacity: 0;
     transform: scale(0.8);
     transition: opacity v.$transition-base, transform v.$transition-base;
-    z-index: 2; // ensure it is above the glass blur (::before and ::after)
+    z-index: 2;
     display: flex;
     align-items: center;
     justify-content: center;

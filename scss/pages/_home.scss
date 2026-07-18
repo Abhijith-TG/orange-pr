@@ -1,16 +1,9 @@
-// ==========================================================================
-// HOME PAGE
-// Page-specific overrides for the home view
-// ==========================================================================
-
 @use '../abstracts/variables' as v;
 
-// Reset default section padding for the hero — it's fullscreen
 #hero {
   padding: 0;
 }
 
-// All other sections use standard spacing
 section:not(#hero):not(#why):not(#about):not(#services) {
   padding: 100px 0;
 }

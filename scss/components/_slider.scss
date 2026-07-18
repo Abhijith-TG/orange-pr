@@ -1,12 +1,6 @@
-// ==========================================================================
-// SLIDER
-// Hero fullscreen slider — background fade, content animations, controls
-// ==========================================================================
-
 @use '../abstracts/variables' as v;
 @use '../abstracts/mixins' as m;
 
-// ---- Hero wrapper ----
 .hero {
   position: relative;
   width: 100%;
@@ -19,7 +13,6 @@
   }
 }
 
-// ---- Individual slide ----
 .slide {
   @include m.absolute-fill;
   z-index: 1;
@@ -27,7 +20,6 @@
   visibility: hidden;
   transition: opacity 0.85s ease, visibility 0.85s ease;
 
-  // ── Background image ──────────────────────────────────────────────────
   &__bg {
     @include m.absolute-fill;
     background-size: cover;
@@ -36,7 +28,6 @@
     transform: scale(1.05);
     transition: transform 1.6s cubic-bezier(0.25, 1, 0.5, 1);
 
-    // Left-side gradient so the white text stays readable
     &::after {
       content: '';
       @include m.absolute-fill;
@@ -46,14 +37,11 @@
           rgba(0, 0, 0, 0.04) 100%);
 
       @include m.respond(md) {
-        // Stronger overlay on mobile for readability
         background: rgba(0, 0, 0, 0.5);
       }
     }
   }
 
-  // ── Content column ────────────────────────────────────────────────────
-  // Pushes all content to the bottom of the viewport
   &__inner {
     position: relative;
     z-index: 2;
@@ -61,13 +49,13 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding-top: m.fluid(130); // Always protect the header space!
+    padding-top: m.fluid(130);
     padding-bottom: m.fluid(52);
 
     @include m.respond(md) {
-      justify-content: center; // vertically center content on mobile
-      padding-top: 100px; // keep clear of header
-      padding-bottom: 80px; // room for dot controls at the bottom
+      justify-content: center;
+      padding-top: 100px;
+      padding-bottom: 80px;
     }
 
     .container {
@@ -75,7 +63,6 @@
     }
   }
 
-  // ── Main body: headline+desc LEFT, video card RIGHT ───────────────────
   &__body {
     display: flex;
     align-items: flex-end;
@@ -91,7 +78,6 @@
     }
   }
 
-  // ── Text side ─────────────────────────────────────────────────────────
   &__text {
     flex: 0 0 auto;
   }
@@ -102,12 +88,11 @@
     flex-direction: column;
     align-items: flex-start;
     font-size: m.fluid-font(128, 64px);
-    line-height: 0.88; // Tighter vertical spacing to match design
+    line-height: 0.88;
     letter-spacing: -2px;
     color: v.$clr-white;
     margin-bottom: m.fluid(22);
     text-transform: uppercase;
-    // entry animation
     opacity: 0;
     transform: translateY(m.fluid(28));
     transition: opacity 0.7s ease 0.25s, transform 0.7s ease 0.25s;
@@ -116,32 +101,28 @@
       font-size: clamp(40px, 12vh, 100px);
     }
 
-    // Responsive scaling to prevent overlap on smaller/shorter screens
     @include m.respond(lg) {
-      font-size: 80px; // Scaled down from 96px to prevent vertical overlap when stacked
+      font-size: 80px;
       margin-bottom: 12px;
     }
 
     @include m.respond(md) {
-      font-size: clamp(40px, 12vw, 56px); // Truly fluid for any mobile screen, capped at 56px
+      font-size: clamp(40px, 12vw, 56px);
       margin-bottom: 12px;
       line-height: 0.95;
     }
 
-    // Line 1 — weight 300 (light)
     .fw-light {
       font-weight: 300;
-      padding: m.fluid(16) 0; // More padding top and bottom than others
+      padding: m.fluid(16) 0;
 
       @include m.respond(md) {
         padding: 8px 0;
       }
     }
 
-    // Lines 2 & 3 — weight 600 (semibold), matching Figma spec
     .fw-bold {
       font-weight: 600;
-      // Optical alignment for JUICY (desktop only, disabled on mobile to avoid edge cut-offs)
       margin-left: -0.25em;
 
       @include m.respond(md) {
@@ -164,13 +145,12 @@
     transition: opacity 0.7s ease 0.45s, transform 0.7s ease 0.45s;
 
     @include m.respond(md) {
-      max-width: 100%; // fill the full container width on mobile
+      max-width: 100%;
       font-size: 14px;
       line-height: 1.65;
     }
   }
 
-  // ── Media (video card) side ───────────────────────────────────────────
   &__media {
     flex-shrink: 0;
     opacity: 0;
@@ -184,13 +164,11 @@
       left: 0;
     }
 
-    // Hide the video card on mobile — the stacked layout is too tall
     @include m.respond(md) {
       display: none;
     }
   }
 
-  // ── Thin horizontal divider ───────────────────────────────────────────
   &__divider {
     width: 100vw;
     margin-left: calc(-50vw + 50%);
@@ -207,18 +185,16 @@
     }
   }
 
-  // ── Explore button ─────────────────────────────────────────────────────
   &__bottom {
     opacity: 0;
     transform: translateY(m.fluid(10));
     transition: opacity 0.6s ease 0.65s, transform 0.6s ease 0.65s;
 
     @include m.respond(md) {
-      margin-bottom: 24px; // gap between Explore btn and slider controls pill
+      margin-bottom: 24px;
     }
   }
 
-  // ── Active state ──────────────────────────────────────────────────────
   &.is-active {
     opacity: 1;
     visibility: visible;
@@ -241,19 +217,14 @@
   }
 }
 
-// ==========================================================================
-// SLIDER CONTROLS PILL
-// Positioned at bottom-right inside the .hero element
-// ==========================================================================
-
 .slider-controls {
   position: absolute;
   bottom: m.fluid(52);
-  right: 2vw; // Aligns exactly with the video card and nav end (96% header width = 2vw margin)
+  right: 2vw;
   z-index: 20;
   display: inline-flex;
   align-items: center;
-  justify-content: space-between; // Space out arrows and dots to fill width
+  justify-content: space-between;
   width: m.fluid(296);
   height: m.fluid(69);
   padding: 0 m.fluid(24);
@@ -272,7 +243,6 @@
   }
 }
 
-// Arrow buttons
 .slider-arrow {
   @include m.flex-center;
   width: m.fluid(32);
@@ -292,8 +262,6 @@
     display: block;
   }
 
-  // Flips the arrow for the next button (assuming the base icon points left)
-  // If the icon points right, this will flip it left. We can adjust if needed!
   &.next-arrow img {
     transform: scaleX(-1);
   }
@@ -303,14 +271,12 @@
   }
 }
 
-// Dots container
 .slider-dots {
   display: flex;
   align-items: center;
   gap: m.fluid(16);
 }
 
-// Individual dot
 .slider-dot {
   width: m.fluid(22);
   height: m.fluid(22);
@@ -322,8 +288,6 @@
   flex-shrink: 0;
   transition: background v.$transition-base, outline-color v.$transition-base;
 
-  // Outer circle is 40px. Dot is 22px. 1px border.
-  // 22 + (8 * 2) + (1 * 2) = 40px total diameter
   outline: 1px solid transparent;
   outline-offset: m.fluid(8);
 

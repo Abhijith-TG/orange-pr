@@ -674,6 +674,7 @@ body {
   user-select: none;
   margin-left: calc(-1 * clamp(85px, calc(170 / 1920 * 100vw), 170px));
   justify-items: end;
+
 }
 
 @media (max-width: 768px) {
@@ -1453,7 +1454,7 @@ body {
   color: #ffffff;
   margin: 0 0 auto;
   padding-bottom: clamp(16px, calc(32 / 1920 * 100vw), 32px);
-  padding-top: 90px;
+  margin-top: 90px;
 }
 
 @media (max-width: 768px) {
