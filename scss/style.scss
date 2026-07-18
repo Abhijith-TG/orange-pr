@@ -1,8 +1,3 @@
-// ==========================================================================
-// STYLE.SCSS — Main Entrypoint
-// Import order: abstracts → base → components → layout → pages
-// ==========================================================================
-
 // Abstracts (no CSS output — variables & mixins only)
 @use 'abstracts/variables';
 @use 'abstracts/mixins';
