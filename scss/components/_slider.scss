@@ -14,8 +14,8 @@
   overflow: hidden;
 
   @include m.respond(md) {
-    height: 100vh;
-    min-height: 680px;
+    height: 100svh;
+    min-height: 580px;
   }
 }
 
@@ -44,6 +44,11 @@
           rgba(0, 0, 0, 0.45) 0%,
           rgba(0, 0, 0, 0.18) 45%,
           rgba(0, 0, 0, 0.04) 100%);
+
+      @include m.respond(md) {
+        // Stronger overlay on mobile for readability
+        background: rgba(0, 0, 0, 0.5);
+      }
     }
   }
 
@@ -57,14 +62,14 @@
     flex-direction: column;
     justify-content: flex-end;
     padding-top: m.fluid(130); // Always protect the header space!
-    // Space for: explore button + divider + body text
     padding-bottom: m.fluid(52);
 
     @include m.respond(md) {
-      padding-bottom: 110px; // Extra space at bottom so Explore button doesn't overlap controls
+      justify-content: center; // vertically center content on mobile
+      padding-top: 100px; // keep clear of header
+      padding-bottom: 80px; // room for dot controls at the bottom
     }
 
-    // Expand the container slightly to reduce the start space (left margin) a little
     .container {
       max-width: 1440px;
     }
@@ -73,7 +78,7 @@
   // ── Main body: headline+desc LEFT, video card RIGHT ───────────────────
   &__body {
     display: flex;
-    align-items: flex-end; // bottom-align text block with card
+    align-items: flex-end;
     justify-content: space-between;
     gap: m.fluid(32);
     margin-bottom: m.fluid(28);
@@ -81,7 +86,8 @@
     @include m.respond(lg) {
       flex-direction: column;
       align-items: flex-start;
-      gap: 24px;
+      gap: 12px;
+      margin-bottom: 12px;
     }
   }
 
@@ -106,25 +112,30 @@
     transform: translateY(m.fluid(28));
     transition: opacity 0.7s ease 0.25s, transform 0.7s ease 0.25s;
 
+    @media (max-height: 850px) and (min-width: 992px) {
+      font-size: clamp(40px, 12vh, 100px);
+    }
+
     // Responsive scaling to prevent overlap on smaller/shorter screens
     @include m.respond(lg) {
       font-size: 80px; // Scaled down from 96px to prevent vertical overlap when stacked
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
 
     @include m.respond(md) {
-      font-size: clamp(40px, 10vw, 64px); // Truly fluid for any mobile screen
-      margin-bottom: 16px;
-    }
-
-    @media (max-height: 850px) {
-      font-size: clamp(40px, 12vh, 100px);
+      font-size: clamp(40px, 12vw, 56px); // Truly fluid for any mobile screen, capped at 56px
+      margin-bottom: 12px;
+      line-height: 0.95;
     }
 
     // Line 1 — weight 300 (light)
     .fw-light {
       font-weight: 300;
       padding: m.fluid(16) 0; // More padding top and bottom than others
+      
+      @include m.respond(md) {
+        padding: 8px 0;
+      }
     }
 
     // Lines 2 & 3 — weight 600 (semibold), matching Figma spec
@@ -151,6 +162,12 @@
     opacity: 0;
     transform: translateY(m.fluid(18));
     transition: opacity 0.7s ease 0.45s, transform 0.7s ease 0.45s;
+
+    @include m.respond(md) {
+      max-width: 100%; // fill the full container width on mobile
+      font-size: 14px;
+      line-height: 1.65;
+    }
   }
 
   // ── Media (video card) side ───────────────────────────────────────────
@@ -159,13 +176,17 @@
     opacity: 0;
     transform: translateY(m.fluid(18));
     transition: opacity 0.7s ease 0.4s, transform 0.7s ease 0.4s;
-    
-    // Shift the video card to perfectly align with the right end of the nav!
+
     position: relative;
     left: calc(50vw - 50% - 2vw);
 
     @include m.respond(lg) {
       left: 0;
+    }
+
+    // Hide the video card on mobile — the stacked layout is too tall
+    @include m.respond(md) {
+      display: none;
     }
   }
 
@@ -181,16 +202,20 @@
     transition: opacity 0.5s ease 0.55s;
 
     @include m.respond(lg) {
-      margin-top: 24px;
-      margin-bottom: 24px;
+      margin-top: 16px;
+      margin-bottom: 16px;
     }
   }
 
-  // ── Bottom row (EXPLORE button) ────────────────────────────────────────
+  // ── Explore button ─────────────────────────────────────────────────────
   &__bottom {
     opacity: 0;
     transform: translateY(m.fluid(10));
     transition: opacity 0.6s ease 0.65s, transform 0.6s ease 0.65s;
+
+    @include m.respond(md) {
+      margin-bottom: 24px; // gap between Explore btn and slider controls pill
+    }
   }
 
   // ── Active state ──────────────────────────────────────────────────────

@@ -154,24 +154,20 @@
     margin-top: m.fluid(14); // 41px total gap - 27px flex gap = 14px extra
     width: m.fluid(188);
     height: m.fluid(84);
-    background-color: #000000;
+    background-color: v.$clr-dark;
     color: v.$clr-white;
-    border: none;
+    border: 2px solid v.$clr-dark;
     border-radius: m.fluid(5);
     font-family: v.$font-primary;
     font-weight: 600;
     font-size: m.fluid-font(16, 14px);
     text-transform: uppercase;
     cursor: pointer;
-    transition: background-color v.$transition-base, transform v.$transition-base;
+    transition: background-color v.$transition-base, color v.$transition-base, border-color v.$transition-base;
 
     &:hover {
-      background-color: rgba(0, 0, 0, 0.8);
-      transform: translateY(-2px);
-    }
-
-    &:active {
-      transform: translateY(0);
+      background-color: transparent;
+      color: v.$clr-dark;
     }
 
     @include m.respond(md) {

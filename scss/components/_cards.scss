@@ -22,15 +22,17 @@
   transition: transform v.$transition-base, background v.$transition-base;
 
   @include m.respond(lg) {
-    width: 300px;
-    height: 230px;
+    width: 220px;
+    height: 168px;
+    padding: m.fluid(14);
   }
 
   @include m.respond(md) {
     width: 100%;
-    max-width: 385px;
+    max-width: 280px; // Reduced from 385px so it doesn't take up the entire screen height
     height: auto;
     aspect-ratio: 385 / 293;
+    margin-top: 8px;
   }
 
   &:hover {
